@@ -3,9 +3,9 @@ title: "Technicomp Labs"
 subtitle: "Systems performance, applied ML, and the engineering behind them."
 name: "Technicomp Labs"
 description: "Deep dives on systems performance, LLM inference, and applied machine learning — with real data from the lab."
-url: "https://technicomplabs.com"   # custom domain
+url: "https://technicomplabs.io"   # custom domain
 baseurl: ""                         # served at the apex, not a /repo path
-# repository: "pauldmartinphd/technicomp-labs"   # set to your repo for "Improve this page" links
+repository: "TechnicompLabs/TechnicompLabs.github.io"   # org Pages repo
 
 # --- Theme (Minimal Mistakes, GitHub Pages compatible) ---
 remote_theme: "mmistakes/minimal-mistakes@master"
