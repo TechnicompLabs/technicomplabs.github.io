@@ -35,7 +35,7 @@ toc: true
 1. Create the repo (e.g. `technicomp-labs`) and push this folder.
 2. In **Settings → Pages**, set **Source: Deploy from a branch**, branch `main`, folder `/ (root)`.
 3. GitHub builds it with Jekyll and serves it. The `remote_theme` and plugins in `_config.yml` are all GitHub Pages compatible, so no Actions workflow is required.
-4. For a custom domain (e.g. `technicomplabs.com`): add a `CNAME` file containing the domain, set `url:`/`baseurl:` in `_config.yml`, and point DNS at GitHub Pages.
+4. For a custom domain (e.g. `technicomplabs.io`): add a `CNAME` file containing the domain, set `url:`/`baseurl:` in `_config.yml`, and point DNS at GitHub Pages.
 
 ## Structure
 

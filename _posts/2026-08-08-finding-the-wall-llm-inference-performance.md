@@ -31,9 +31,9 @@ I run [STREAM](https://www.cs.virginia.edu/stream/) as a thread sweep, then appl
 
 There's a built-in sanity check: uncorrected-Copy plus the RFO correction must not exceed the theoretical ceiling. On Galactus it would have — proof that Copy used non-temporal stores and shouldn't be corrected. With that resolved, all four kernels converge:
 
-**~152 GB/s**, which is 74% of the 204.8 GB/s theoretical peak for 8-channel DDR4-2933.
+**~152 GB/s**, which is 81% of the 187.7 GB/s theoretical peak for 8-channel DDR4-2933.
 
-Two things already fall out of this one number. Bandwidth *saturates at 16 threads* and declines past it — so decode has no reason to want all 64 cores. And 74% of theoretical is a healthy platform; if it had come back at 50%, the story would've been "fix your memory topology," not "tune llama.cpp."
+Two things already fall out of this one number. Bandwidth *saturates at 16 threads* and declines past it — so decode has no reason to want all 64 cores. And 81% of theoretical is a healthy platform; if it had come back at 50%, the story would've been "fix your memory topology," not "tune llama.cpp."
 
 ## Step 2: Predict decode before you measure it
 
