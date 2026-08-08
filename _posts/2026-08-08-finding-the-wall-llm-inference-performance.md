@@ -1,8 +1,8 @@
 ---
-title: "Finding the Wall: How to Actually Test LLM Inference Performance"
+title: "Finding the bandwidth wall in local LLM inference"
 date: 2026-08-08
 permalink: /posts/2026/08/finding-the-wall/
-excerpt: "A repeatable method for finding a machine's real inference limits — demonstrated on a 64-core EPYC server running 750B-parameter MoE models, from raw memory bandwidth to a llama.cpp scheduler patch that took prefill from 105 to 119 tokens/second."
+excerpt: "A repeatable method for measuring the real limits of local LLM inference, applied to a 64-core EPYC server running 750-billion-parameter Mixture-of-Experts models on llama.cpp. It covers memory bandwidth measurement, a predictive model for decode speed, single-variable sweeps, and a llama.cpp scheduler patch that raised prefill from 105 to 119 tokens per second."
 categories:
   - performance
 tags:
@@ -15,136 +15,140 @@ toc: true
 toc_sticky: true
 ---
 
-Most "how fast is my local LLM" numbers are vibes. Someone changes a flag, the tokens/second wiggles, and a conclusion gets posted. Then someone else can't reproduce it, because the number never came from a model of the machine — it came from a single run with an unstated microbatch and a background compile eating three cores.
+Benchmark numbers for local language model inference are often not reproducible. A contributor changes one flag, records a tokens-per-second value, and publishes a conclusion. The value came from a single run with an unstated microbatch size and no model of the hardware, so a second person cannot reproduce it.
 
-This is the method I actually use, demonstrated end to end on one machine. The rule underneath it: **establish the physical ceiling, predict what the software should reach, then change one variable at a time and explain every number — and keep the hypotheses that got refuted, because they save more time than the ones that held.**
+This post describes a method that produces reproducible numbers. The method has one principle. Measure the physical limit of the hardware first. Predict what the software should reach. Then change one variable at a time and explain each result against the prediction. Record the results that fail as well as the results that succeed.
 
-The machine is **Galactus**: an AMD EPYC 7713 (64 cores / 128 threads, Zen 3), 2 TB of DDR4-2933 across 8 channels, and 4 × AMD Radeon Pro V620, running llama.cpp and ROCm in a container on Proxmox. The workload is hybrid Mixture-of-Experts inference — routed experts held in system RAM, the dense path (attention, shared experts, KV cache) on the GPUs. The headline model is **GLM-5.2** (753 B parameters, 435 GiB at Q4), with **DeepSeek-V4-Flash** along for the speculative-decode section.
+I applied the method to one machine over about three weeks. This post uses that machine as the worked example.
 
-By the end, GLM-5.2 prefill went from 37.6 to 119.4 tokens/second and decode from 5.2 to 7.1 — and, more importantly, both ceilings are explained rather than stumbled into.
+The machine is a server named Galactus. It has an AMD EPYC 7713 (64 cores, 128 threads, Zen 3), 2 TB of DDR4-2933 across 8 channels, and four AMD Radeon Pro V620 GPUs. It runs llama.cpp with the ROCm backend inside an LXC container on Proxmox. The workload is hybrid Mixture-of-Experts (MoE) inference: the routed experts stay in system RAM, and the dense path (attention, shared experts, and the KV cache) runs on the GPUs. The primary model is GLM-5.2, which has 753 billion parameters and occupies 435 GiB at a 4-bit quantization. A second model, DeepSeek-V4-Flash, appears in the section on speculative decoding.
 
-## Step 1: Start at the wall, not the model
+Over the investigation, GLM-5.2 prefill rose from 37.6 to 119.4 tokens per second, and decode rose from 5.2 to 7.1 tokens per second. This post explains both limits by measurement.
 
-For CPU-resident MoE, decode speed is set by one thing: how fast the active experts can be read out of DRAM every token. So the first measurement isn't a model benchmark at all. It's memory bandwidth.
+## Measure the memory bandwidth first
 
-I run [STREAM](https://www.cs.virginia.edu/stream/) as a thread sweep, then apply the **read-for-ownership (RFO) correction**. STREAM undercounts write traffic, because an ordinary store first has to read the cache line it's about to overwrite — traffic STREAM never counts. The fix is to scale the write-heavy kernels: Scale ×1.5, Add and Triad ×4/3. Copy needs no correction *if* the compiler turned it into non-temporal stores.
+In hybrid MoE inference, the model reads the active expert weights from DRAM on every decode step. Decode speed is therefore limited by memory bandwidth. The first measurement is the memory bandwidth of the machine, taken before any model runs.
 
-There's a built-in sanity check: uncorrected-Copy plus the RFO correction must not exceed the theoretical ceiling. On Galactus it would have — proof that Copy used non-temporal stores and shouldn't be corrected. With that resolved, all four kernels converge:
+I measure bandwidth with STREAM, run as a sweep over thread counts. STREAM reports four kernels: Copy, Scale, Add, and Triad. The raw STREAM values undercount write traffic. When a program writes a cache line that it has not already loaded, the hardware first reads that line into cache before the write completes. This extra read is called read-for-ownership (RFO). STREAM does not count it.
 
-**~152 GB/s**, which is 81% of the 187.7 GB/s theoretical peak for 8-channel DDR4-2933.
+To recover the true traffic, apply the RFO correction. Multiply Scale by 1.5, and multiply Add and Triad by 4/3. The Copy kernel needs no correction when the compiler emits non-temporal store instructions, because those stores bypass the cache and skip the read-for-ownership step.
 
-Two things already fall out of this one number. Bandwidth *saturates at 16 threads* and declines past it — so decode has no reason to want all 64 cores. And 81% of theoretical is a healthy platform; if it had come back at 50%, the story would've been "fix your memory topology," not "tune llama.cpp."
+The Copy case has a consistency check. If uncorrected Copy plus the RFO correction exceeds the theoretical peak, then Copy used non-temporal stores and needs no correction. On Galactus the corrected value would have exceeded the peak, which confirms the non-temporal path.
 
-## Step 2: Predict decode before you measure it
+After the correction, all four kernels converge on about 152 GB/s. The theoretical peak for eight channels of DDR4-2933 is `8 × 2933 × 8` bytes, or 187.7 GB/s. The measured 152 GB/s is 81% of that peak. Bandwidth reaches its maximum at 16 threads and falls slightly at higher thread counts. It saturates at 16 threads because each Zen 3 core complex die reaches the I/O die over a single GMI2 link, so a few active dies already saturate the path to DRAM.
 
-Now I use the wall to predict the model, with a two-term model of a decode step:
+Two facts follow from this single number. Decode does not benefit from all 64 cores, because bandwidth saturates at 16 threads. And 81% of the theoretical peak indicates a correctly configured memory subsystem. A result near 50% would indicate a memory topology fault rather than a software fault.
 
-```
-time_per_token ≈ C + (bytes_read_per_token ÷ bandwidth)
-```
+## Predict decode speed before measuring it
 
-`C` is a fixed GPU-side cost you measure once. `bytes_read_per_token` is the active-expert footprint at your quant. For GLM-5.2, `C ≈ 90 ms` and the experts read ≈ 13.8 GB/token, so:
+Use the bandwidth to predict decode speed. Model one decode step as two terms:
 
 ```
-90 ms + (13.8 GB ÷ 152 GB/s) ≈ 90 + 91 = 181 ms  →  ~5.5 t/s
+time_per_token = C + (bytes_read_per_token / bandwidth)
 ```
 
-Measured: **5.53 t/s**. I ran the same model against two more configurations (a VRAM-filled "fitter" setup and a CPU-only denominator); it predicted **6.2 and 3.9**, and measured **6.01 and 3.87**. When the model and the machine agree to within a few percent across three configs, you're not guessing anymore — you know decode is bandwidth-bound, and you know roughly what any change *can* buy before you run it. No amount of CPU tuning will move a wall made of DRAM.
+`C` is a fixed cost on the GPU side. Measure it once from a known configuration. `bytes_read_per_token` is the size of the active expert set at the quantization of the model. For GLM-5.2, `C` is about 90 ms, and the model reads about 13.8 GB per token:
 
-## Step 3: The iterative loop — one variable at a time
+```
+90 ms + (13.8 GB / 152 GB/s) = 90 ms + 91 ms = 181 ms
+181 ms per token is about 5.5 tokens per second
+```
 
-With the ceiling known, the loop is simple to state and easy to botch:
+The measured value was 5.53 tokens per second. I applied the same model to two other configurations: a setup that fills VRAM with resident experts, and a CPU-only configuration with no GPU offload. The model predicted 6.2 and 3.9 tokens per second. The measurements were 6.01 and 3.87. Agreement across three configurations to within a few percent shows that decode is bandwidth-bound on this machine. It also gives an upper bound on what any decode change can achieve, before that change is tested. No CPU-side change can move a limit set by DRAM bandwidth.
 
-1. **Baseline**, measured correctly.
-2. **Change one variable**, and **sweep it** — read the shape, not just the peak.
-3. **Next variable**, carrying forward the previous winner *only once you know why it won.*
+## Change one variable at a time
 
-The thread sweep shows why you sweep instead of guessing "more is better":
+With the limit known, the test loop has three steps:
+
+1. Record a baseline with the current configuration, measured correctly.
+2. Change one variable and sweep it across a range. Read the full curve, not only the peak value.
+3. Move to the next variable. Keep a setting only after the reason for its effect is understood.
+
+The thread sweep shows why a sweep is necessary. Decode does not improve with more threads:
 
 | Threads | GLM-5.2 decode (t/s) |
 |--------:|---------------------:|
-| 24–32   | ~5.5 (peak)          |
-| 96      | 2.76                 |
-| 128     | 1.29                 |
+| 24 to 32 | 5.5 (peak) |
+| 96 | 2.76 |
+| 128 | 1.29 |
 
-Decode peaks around half the physical cores and *collapses* once you schedule onto SMT siblings. Prefill, meanwhile, keeps climbing with threads — a different curve for the same knob, which is exactly why you don't reuse a decode-optimal setting for a prefill test.
+Decode peaks near half the physical core count and falls sharply once threads land on SMT sibling cores. Prefill follows a different curve. It continues to rise with thread count. The two phases have different optimal thread counts for the same flag, so a decode-optimal setting must not be reused for a prefill test.
 
-### The war story: how one default poisoned a day of results
+### A default that invalidated a set of results
 
-Then the microbatch sweep, which is where I got humbled:
+The microbatch sweep produced a large effect:
 
 | n_ubatch | GLM-5.2 pp8192 (t/s) |
 |---------:|---------------------:|
-| 512      | 25.90                |
-| 1024     | 41.68                |
-| 2048     | 62.64                |
-| 4096     | 84.62                |
-| 8192     | 104.97               |
+| 512 | 25.90 |
+| 1024 | 41.68 |
+| 2048 | 62.64 |
+| 4096 | 84.62 |
+| 8192 | 104.97 |
 
-That's a **4× swing** on a single knob. And here's the trap: `llama-bench`'s `-p` flag *silently clamps* `n_ubatch` to the prompt length. Every "op_offload" prefill number I'd taken that morning had a `-p 512` inherited from an old script — so they'd all secretly run at ub 512, not the ub 8192 I thought I was testing. A day of numbers, quietly invalidated by one default. Set `-ub` explicitly, every single time, and never trust a prefill number until you've confirmed the effective microbatch.
+The prefill rate changes by a factor of four across this single parameter. The measurement contains a failure mode. In `llama-bench`, the `-p` flag sets the prompt length and also clamps `n_ubatch` to that length. A `-p 512` value inherited from an older script had silently clamped every prefill test that morning to a microbatch of 512, not the 8192 I intended. Those results were invalid. The rule that follows: set `-ub` explicitly on every run, and confirm the effective microbatch before recording a prefill number.
 
-## Step 4: The dependency tree of changes
+## Dependencies between variables
 
-The reason that microbatch bug was so costly is that changes aren't independent — they sit in a tree, and one setting can silently confound everything downstream. Before I trust a result, I place the variable in that tree:
+Changes are not independent. Before recording a result, locate the variable in the dependency structure. There are four common cases.
 
-- **Some changes poison everything upstream of them.** `-p` clamping `n_ubatch` is the poster child.
-- **Some changes only help in one regime.** `op_offload` is a net *loss* at small microbatch (the per-microbatch streaming cost dominates) and a big win at ub 8192. Test a change where it's actually able to win.
-- **Some changes touch only one phase.** The scheduler patch below moves prefill and leaves decode untouched — so if decode had regressed, that'd be a bug, not a tradeoff.
-- **Some paths look equivalent and aren't.** Pinning experts resident on a GPU via `-ot` placement is a *different code path* from `op_offload`, and on GLM-5.2 it measured 17% slower. "Same idea" is not "same performance."
+- One setting can invalidate every result that depends on it. The `-p` clamp on `n_ubatch` is an example. It silently changed the microbatch for every downstream test.
+- A change can help in one regime only. `op_offload` reduces prefill speed at small microbatch, because the per-microbatch streaming cost dominates, and it increases prefill speed at a microbatch of 8192. Test a change in the regime where it can help.
+- A change can affect one phase only. The scheduler patch below raises prefill and leaves decode unchanged. A decode regression after that patch would indicate a defect.
+- Two paths can share an idea and differ in performance. Pinning experts resident on a GPU with `-ot` placement uses a different code path from `op_offload`. On GLM-5.2 the resident-placement path measured 17% slower at a microbatch of 2048.
 
-Draw the tree, and a later measurement can't be quietly sabotaged by an earlier flag.
+## A scheduler patch found by inspecting the mechanism
 
-## Step 5: The capstone — finding a llama.cpp patch by mechanism
-
-This is the whole loop in one finding, and it's my favorite because a *negative* result is what cracked it.
-
-**Baseline:** prefill plateaued at 104.97 t/s (ub 8192). Fast, but I didn't know if that was the wall or an artifact. So instead of poking flags, I looked at the *mechanism* — the scheduler's split histogram:
+Prefill had reached a plateau of 104.97 tokens per second at a microbatch of 8192. To decide whether this was the hardware limit or an artifact, I inspected the behavior of the scheduler rather than testing more flags. The relevant signal is the distribution of graph splits across the GPUs:
 
 ```bash
 GGML_SCHED_DEBUG=2 llama-bench -m GLM-5.2-... -ngl 99 -ot "exps=CPU" -fa 1 -v \
   -t 32 -b 512 -ub 512 -p 512 -n 0 -r 1 2>&1 | grep '## SPLIT' | sort | uniq -c
 ```
 
-Result: **731 of 1,186 GPU offload splits landed on a single card** (ROCm0). Three of four GPUs were sitting idle during prefill. There's the artifact.
+The output showed 731 of 1,186 GPU offload splits assigned to a single card (ROCm0). Three of the four GPUs were idle during prefill.
 
-**Hypothesis:** distribute the offloaded expert matmuls across all four cards.
+The hypothesis: distribute the offloaded expert matmuls across all four cards.
 
-**Pre-registered null:** I predicted, in writing, that distribution *alone* would do nothing — because the expert-weight copies were already asynchronous, and the thing actually serializing them was a per-split `synchronize` used to read the routing IDs. If that sync is the real bottleneck, spreading the work to four cards just gives you four streams that each still wait their turn. I built distribution-only first specifically to *try to refute my own hypothesis*: it came back **105.71 vs 104.97** — no change, exactly as predicted. The histogram equalized perfectly while throughput didn't budge, which is the tell that you've moved a mechanism without moving the bottleneck.
+I recorded a prediction before testing it. Distribution alone would not increase throughput. The expert-weight copies already ran asynchronously. The serialization came from a per-split synchronize that reads the expert-selection IDs. If that synchronize is the limit, then spreading the work across four cards gives four streams that each still wait on the synchronize. I built the distribution-only version first, to test the prediction against a possible refutation. It measured 105.71 against the 104.97 baseline. The split histogram equalized across the four cards while throughput held constant. An equalized histogram with unchanged throughput confirms that the mechanism moved and the limit did not.
 
-**The real fix:** at prefill-sized batches, essentially every expert is used by *some* token, so reading the IDs to find "which experts are active" saves no bandwidth — it only imposes the serializing sync. Skip the read at large batch, mark all experts used, and the copies can issue immediately and overlap compute across cards. Three small edits to `ggml/src/ggml-backend.cpp`:
+The fix targets the synchronize. At a prefill-sized batch, almost every expert is selected by some token in the batch, so reading the IDs to identify the active experts recovers no bandwidth. The read only imposes the serializing synchronize. At a large batch, skip the read, mark all experts active, and let the copies issue immediately so they overlap compute on the other cards. The change is three edits to `ggml/src/ggml-backend.cpp`.
 
 | Build | pp8192 | pp16384 | pp32768 |
 |---|---:|---:|---:|
-| Stock (ub 8192) | 104.97 | — | — |
-| Distribution only | 105.71 | — | — |
-| **Distribution + ID-read bypass** | **119.36** | 86.11 | 55.76 |
+| Stock (ub 8192) | 104.97 | n/a | n/a |
+| Distribution only | 105.71 | n/a | n/a |
+| Distribution and ID-read bypass | 119.36 | 86.11 | 55.76 |
 
-**+13.7%**, histogram equalized to 285/300/294/292 across the cards. The full patch and reproduction steps are [in the repo](https://github.com/pauldmartinphd/llm-performance-engineering-notebook). The point for this post isn't the 13.7% — it's *how* it was found: predict, measure the mechanism, and let a refuted hypothesis point at the real cause.
+The patched build reached 119.36 tokens per second, a 13.7% increase, with the splits distributed across the four cards (285, 300, 294, 292). The full patch and the reproduction steps are in the [repository](https://github.com/pauldmartinphd/llm-performance-engineering-notebook). The null result located the fix. It confirmed that the synchronize, not the card assignment, was the limit.
 
-## Step 6: Decode gains live in speculation
+## Decode gains come from speculative decoding
 
-Prefill was scheduling; decode is physics. The two-term model already told me decode was pinned to the DRAM wall, and no CPU knob — threads, affinity, polling, hugepages, repacked kernels — moved it, because none of them change bytes or bandwidth. The only lever that reads *fewer* bytes per accepted token is **speculative decoding**.
+The two-term model already showed that decode is bandwidth-bound. No CPU-side change moved it: not thread count, CPU affinity, threadpool polling, transparent hugepages, or repacked kernels. None of these change the bytes read or the bandwidth. The one method that reduces bytes read per accepted token is speculative decoding.
 
-- **GLM-5.2** gained multi-token-prediction support upstream (`--spec-type draft-mtp`). Sweeping draft depth: n=1 → 6.8, **n=2 → 7.1**, n=3 → 6.9 t/s. Locked at n=2: **+31%**, and past the 7 t/s reading-speed bar for the first time.
-- **DeepSeek-V4-Flash-0731** with DSpark (`--spec-type draft-dspark`, a block-5 drafter in VRAM) went further: baseline ~10.1 → **14.7 t/s at n=3**, about **+45%** — the fastest decode this machine has produced on any model.
+GLM-5.2 supports multi-token prediction (`--spec-type draft-mtp`). A sweep over draft depth gave 6.8 tokens per second at depth 1, 7.1 at depth 2, and 6.9 at depth 3. Depth 2 is the production setting: 7.1 tokens per second, a 31% increase over the 5.4 baseline.
 
-The depth curves have a shape worth internalizing. Both peak at n=2–3 and *regress* by n=5: on a top-k-of-many MoE, each drafted token activates a nearly disjoint set of experts, so deep speculation pays more expert-read bytes than its acceptance rate earns back. Same verify-tax the model predicts; you can see it in the numbers.
+DeepSeek-V4-Flash-0731 with the DSpark drafter (`--spec-type draft-dspark`, a block-5 drafter resident in VRAM) reached 14.7 tokens per second at depth 3, a 45% increase over its 10.1 baseline. This is the highest decode rate the machine produced on any model.
 
-## Step 7: Record everything — including the "no"s
+Both depth curves peak at depth 2 or 3 and fall at depth 5. On a top-k-of-many MoE model, each drafted token activates a nearly disjoint set of experts. Deep speculation reads more expert bytes than its acceptance rate recovers, so positions 4 and 5 cost more than they return.
 
-Every run gets logged with its *full* configuration — date, exact flags, build, metric, value, source line. A tokens/second figure without its flags and build isn't a result; it's an anecdote.
+## Limitations
 
-And I log the dead ends deliberately. Over this investigation, all of these were measured and **refuted** for this workload: NUMA imbalance, container overhead, threadpool polling, strict CPU affinity, `CPU_REPACK`, transparent hugepages, `-sm row`, pipeline parallelism, ZenDNN, and HIP managed memory. That list is the single most useful thing the whole effort produced, because every "no" is a road the next person doesn't have to drive down.
+The numbers in this post come from one machine. Most speculative-decoding tests used a single prompt (a technical-prose question) with greedy decoding. The acceptance rates for the DSpark runs were not captured, because the log-capture instrumentation failed during that session. That failure is recorded in the lab notebook. The 152 GB/s bandwidth figure and the GLM-5.2 results come from an earlier 1 TB memory configuration. The machine now has 2 TB, and the bandwidth re-measurement on the new modules is still open. A reader who repeats this method on other hardware should expect different constants and should re-derive them.
 
-## The takeaway
+## Record every result, including the failures
 
-The specific numbers here are Galactus's. The method isn't:
+Record each run with its full configuration: the date, the exact flags, the build identifier, the metric, the value, and the source. A tokens-per-second value without its flags and build is not a result.
 
-1. **Measure the physical ceiling** (STREAM + RFO).
-2. **Predict** the workload from it (the two-term model).
-3. **Sweep one variable at a time**, reading shapes.
-4. **Place each change in the dependency tree** so nothing is confounded.
-5. **Debug by mechanism**, and trust refuted hypotheses.
-6. **Record results and the "no"s.**
+Record the failed hypotheses as well. Over this investigation the following were measured and refuted for this workload: NUMA imbalance, container overhead, threadpool polling, strict CPU affinity, CPU_REPACK, transparent hugepages, the `-sm row` split mode, pipeline parallelism, ZenDNN, and HIP managed memory. This list is the most reusable output of the work, because each refuted item is a path that another person does not need to test.
 
-That's the difference between "I changed a flag and it got faster" and "I know what this machine can do, and why." The terse, copy-pasteable version of this procedure — and every benchmark row behind these numbers — lives in the [llm-performance-engineering-notebook repo](https://github.com/pauldmartinphd/llm-performance-engineering-notebook).
+## The method, restated
+
+1. Measure the physical limit with STREAM and the RFO correction.
+2. Predict the workload from that limit with the two-term model.
+3. Sweep one variable at a time and read the full curve.
+4. Place each change in the dependency structure so no result is confounded.
+5. Inspect the mechanism when a number reaches a plateau, and test each prediction against a possible refutation.
+6. Record every result and every refuted hypothesis.
+
+The specific numbers here are properties of this machine. The method applies to any comparable system. The procedure above, and every benchmark row behind these numbers, is in the [llm-performance-engineering-notebook repository](https://github.com/pauldmartinphd/llm-performance-engineering-notebook).
