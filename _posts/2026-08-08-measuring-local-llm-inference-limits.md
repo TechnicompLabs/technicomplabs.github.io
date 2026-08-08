@@ -1,8 +1,8 @@
 ---
-title: "Finding the bandwidth wall in local LLM inference"
+title: "A Scientific Method for Measuring the Limits of Local LLM Inference Speed"
 date: 2026-08-08
-permalink: /posts/2026/08/finding-the-wall/
-excerpt: "A repeatable method for measuring the real limits of local LLM inference, applied to a 64-core EPYC server running 750-billion-parameter Mixture-of-Experts models on llama.cpp. It covers memory bandwidth measurement, a predictive model for decode speed, single-variable sweeps, and a llama.cpp scheduler patch that raised prefill from 105 to 119 tokens per second."
+permalink: /posts/2026/08/measuring-local-llm-inference-limits/
+excerpt: "A reproducible method for measuring the speed limits of local LLM inference, applied to a 64-core EPYC server running 750-billion-parameter Mixture-of-Experts models on llama.cpp. It covers memory bandwidth measurement, a predictive model for decode speed, single-variable experiments, and a llama.cpp scheduler patch that raised prefill from 105 to 119 tokens per second."
 categories:
   - performance
 tags:
@@ -17,13 +17,13 @@ toc_sticky: true
 
 Benchmark numbers for local language model inference are often not reproducible. A contributor changes one flag, records a tokens-per-second value, and publishes a conclusion. The value came from a single run with an unstated microbatch size and no model of the hardware, so a second person cannot reproduce it.
 
-This post describes a method that produces reproducible numbers. The method has one principle. Measure the physical limit of the hardware first. Predict what the software should reach. Then change one variable at a time and explain each result against the prediction. Record the results that fail as well as the results that succeed.
+This post applies the scientific method to inference speed. The procedure has four parts. Measure the physical limit of the hardware. State a hypothesis for what the software should achieve against that limit. Test the hypothesis by changing one variable at a time. Record every result, including the results that refute the hypothesis. The output is a set of measurements that another person can reproduce, and a physical explanation for each one.
 
-I applied the method to one machine over about three weeks. This post uses that machine as the worked example.
+I applied the procedure to one machine over approximately three weeks. This post uses that machine as the worked example.
 
-The machine is a server named Galactus. It has an AMD EPYC 7713 (64 cores, 128 threads, Zen 3), 2 TB of DDR4-2933 across 8 channels, and four AMD Radeon Pro V620 GPUs. It runs llama.cpp with the ROCm backend inside an LXC container on Proxmox. The workload is hybrid Mixture-of-Experts (MoE) inference: the routed experts stay in system RAM, and the dense path (attention, shared experts, and the KV cache) runs on the GPUs. The primary model is GLM-5.2, which has 753 billion parameters and occupies 435 GiB at a 4-bit quantization. A second model, DeepSeek-V4-Flash, appears in the section on speculative decoding.
+The test system, referred to here as Galactus, is a single server: an AMD EPYC 7713 (64 cores, 128 threads, Zen 3), 2 TB of DDR4-2933 memory across 8 channels, and four AMD Radeon Pro V620 GPUs. It runs llama.cpp with the ROCm backend inside an LXC container on Proxmox. The workload is hybrid Mixture-of-Experts (MoE) inference: the routed experts remain in system RAM, and the dense path (attention, shared experts, and the KV cache) runs on the GPUs. The primary model is GLM-5.2, with 753 billion parameters and 435 GiB at 4-bit quantization. A second model, DeepSeek-V4-Flash, appears in the section on speculative decoding.
 
-Over the investigation, GLM-5.2 prefill rose from 37.6 to 119.4 tokens per second, and decode rose from 5.2 to 7.1 tokens per second. This post explains both limits by measurement.
+Over the investigation, GLM-5.2 prefill increased from 37.6 to 119.4 tokens per second, and decode increased from 5.2 to 7.1 tokens per second. Each limit has a measured explanation.
 
 ## Measure the memory bandwidth first
 
@@ -39,9 +39,9 @@ After the correction, all four kernels converge on about 152 GB/s. The theoretic
 
 Two facts follow from this single number. Decode does not benefit from all 64 cores, because bandwidth saturates at 16 threads. And 81% of the theoretical peak indicates a correctly configured memory subsystem. A result near 50% would indicate a memory topology fault rather than a software fault.
 
-## Predict decode speed before measuring it
+## Predict decode speed from measured memory bandwidth
 
-Use the bandwidth to predict decode speed. Model one decode step as two terms:
+Use the measured bandwidth to predict decode speed. Model one decode step as two terms:
 
 ```
 time_per_token = C + (bytes_read_per_token / bandwidth)
@@ -54,11 +54,11 @@ time_per_token = C + (bytes_read_per_token / bandwidth)
 181 ms per token is about 5.5 tokens per second
 ```
 
-The measured value was 5.53 tokens per second. I applied the same model to two other configurations: a setup that fills VRAM with resident experts, and a CPU-only configuration with no GPU offload. The model predicted 6.2 and 3.9 tokens per second. The measurements were 6.01 and 3.87. Agreement across three configurations to within a few percent shows that decode is bandwidth-bound on this machine. It also gives an upper bound on what any decode change can achieve, before that change is tested. No CPU-side change can move a limit set by DRAM bandwidth.
+The measured value was 5.53 tokens per second. I applied the same model to two other configurations: a setup that fills VRAM with resident experts, and a CPU-only configuration with no GPU offload. The model predicted 6.2 and 3.9 tokens per second. The measurements were 6.01 and 3.87. Agreement across three configurations to within a few percent confirms that decode is bandwidth-bound on this machine. The model also gives an upper bound on what any decode change can achieve, before that change is tested. No CPU-side change can move a limit set by DRAM bandwidth.
 
 ## Change one variable at a time
 
-With the limit known, the test loop has three steps:
+With the limit known, the experimental loop has three steps:
 
 1. Record a baseline with the current configuration, measured correctly.
 2. Change one variable and sweep it across a range. Read the full curve, not only the peak value.
@@ -88,7 +88,7 @@ The microbatch sweep produced a large effect:
 
 The prefill rate changes by a factor of four across this single parameter. The measurement contains a failure mode. In `llama-bench`, the `-p` flag sets the prompt length and also clamps `n_ubatch` to that length. A `-p 512` value inherited from an older script had silently clamped every prefill test that morning to a microbatch of 512, not the 8192 I intended. Those results were invalid. The rule that follows: set `-ub` explicitly on every run, and confirm the effective microbatch before recording a prefill number.
 
-## Dependencies between variables
+## Control for dependencies between variables
 
 Changes are not independent. Before recording a result, locate the variable in the dependency structure. There are four common cases.
 
@@ -99,7 +99,7 @@ Changes are not independent. Before recording a result, locate the variable in t
 
 ## A scheduler patch found by inspecting the mechanism
 
-Prefill had reached a plateau of 104.97 tokens per second at a microbatch of 8192. To decide whether this was the hardware limit or an artifact, I inspected the behavior of the scheduler rather than testing more flags. The relevant signal is the distribution of graph splits across the GPUs:
+Prefill reached a plateau of 104.97 tokens per second at a microbatch of 8192. To decide whether this was the hardware limit or an artifact, I inspected the behavior of the scheduler rather than testing more flags. The relevant signal is the distribution of graph splits across the GPUs:
 
 ```bash
 GGML_SCHED_DEBUG=2 llama-bench -m GLM-5.2-... -ngl 99 -ot "exps=CPU" -fa 1 -v \
@@ -122,7 +122,7 @@ The fix targets the synchronize. At a prefill-sized batch, almost every expert i
 
 The patched build reached 119.36 tokens per second, a 13.7% increase, with the splits distributed across the four cards (285, 300, 294, 292). The full patch and the reproduction steps are in the [repository](https://github.com/pauldmartinphd/llm-performance-engineering-notebook). The null result located the fix. It confirmed that the synchronize, not the card assignment, was the limit.
 
-## Decode gains come from speculative decoding
+## Reduce decode bytes with speculative decoding
 
 The two-term model already showed that decode is bandwidth-bound. No CPU-side change moved it: not thread count, CPU affinity, threadpool polling, transparent hugepages, or repacked kernels. None of these change the bytes read or the bandwidth. The one method that reduces bytes read per accepted token is speculative decoding.
 
@@ -142,7 +142,7 @@ Record each run with its full configuration: the date, the exact flags, the buil
 
 Record the failed hypotheses as well. Over this investigation the following were measured and refuted for this workload: NUMA imbalance, container overhead, threadpool polling, strict CPU affinity, CPU_REPACK, transparent hugepages, the `-sm row` split mode, pipeline parallelism, ZenDNN, and HIP managed memory. This list is the most reusable output of the work, because each refuted item is a path that another person does not need to test.
 
-## The method, restated
+## Summary of the method
 
 1. Measure the physical limit with STREAM and the RFO correction.
 2. Predict the workload from that limit with the two-term model.
