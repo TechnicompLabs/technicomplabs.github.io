@@ -31,7 +31,7 @@ The core is an AMD EPYC 7713, a 64-core Milan chip with eight memory channels. T
 
 I filled it with 1 TB of DDR4, and it is 2 TB now. That sounds excessive until you price it out. DDR4 has been getting cheaper as everything moves to DDR5, so a terabyte of registered ECC memory ran me about $5,600, and it is what lets the machine load a 435 GiB model and still have room to work.
 
-The part I am happiest about is the GPUs. I found four AMD Radeon Pro V620s for $400 each. The V620 is a datacenter card with 32 GB of memory on it, so four of them give me roughly 120 GiB of VRAM for $1,600. The obvious alternative would have been four RTX 3090s, which would have cost several times as much, given me less total VRAM, and, once I measured it, run this workload at basically the same speed: an estimated 6.3 tokens per second for the 3090s against the 6.01 I actually get. At about $12.50 per gigabyte of VRAM, those V620s are the best decision in the build.
+The part I am happiest about is the GPUs. The V620 is a datacenter card with 32 GB of memory on it, the kind of part that normally never reaches a hobbyist at a reasonable price. I got lucky. I found a seller on eBay sitting on a surplus of them and bought four for $400 each, which is roughly 120 GiB of VRAM for $1,600. The obvious alternative would have been four RTX 3090s, which would have cost several times as much, given me less total VRAM, and, once I measured it, run this workload at basically the same speed: an estimated 6.3 tokens per second for the 3090s against the 6.01 I actually get. At about $12.50 per gigabyte of VRAM, those V620s are the best decision in the build.
 
 The whole thing runs llama.cpp on the ROCm backend inside an LXC container on Proxmox. It came to about $9,050 all in.
 
