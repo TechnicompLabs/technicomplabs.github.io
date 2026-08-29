@@ -1,8 +1,8 @@
 # --- Site ---
 title: "Technicomp Labs"
-subtitle: "Systems performance, applied ML, and the engineering behind them."
+subtitle: "Systems performance, applied ML, and vintage computing."
 name: "Technicomp Labs"
-description: "Deep dives on systems performance, LLM inference, and applied machine learning — with real data from the lab."
+description: "Systems performance, LLM inference, applied machine learning, and vintage computer restoration — with real data from the lab of Paul D. Martin, Ph.D."
 url: "https://technicomplabs.io"   # custom domain
 baseurl: ""                         # served at the apex, not a /repo path
 repository: "TechnicompLabs/TechnicompLabs.github.io"   # org Pages repo
@@ -37,15 +37,23 @@ plugins:
 # --- Author (appears in the sidebar profile) ---
 author:
   name: "Paul D. Martin, Ph.D."
-  avatar: "/assets/images/bio-photo.jpg"   # add an image here, or remove this line
-  bio: "Performance engineering and applied ML at Technicomp Labs."
+  avatar: "/assets/images/bio-photo.jpg"
+  bio: "Systems performance, applied ML, and vintage computing at Technicomp Labs."
   links:
+    - label: "pauldmartin.phd"
+      icon: "fas fa-fw fa-link"
+      url: "https://pauldmartin.phd"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/pauldmartinphd"
 
+og_image: "/assets/images/lab-bench-window.jpg"
+
 footer:
   links:
+    - label: "pauldmartin.phd"
+      icon: "fas fa-fw fa-link"
+      url: "https://pauldmartin.phd"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/pauldmartinphd"
