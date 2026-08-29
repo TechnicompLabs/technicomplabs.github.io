@@ -13,7 +13,15 @@ tags:
   - benchmarking
 toc: true
 toc_sticky: true
+header:
+  teaser: /assets/images/galactus-build.jpg
+  og_image: /assets/images/galactus-build.jpg
 ---
+
+<figure>
+  <img src="/assets/images/galactus-build.jpg" alt="Galactus: LLM inference server build with four AMD Radeon Pro V620 GPUs and an EPYC 7713 in a Jonsbo N5 chassis">
+  <figcaption>Galactus — the EPYC 7713 / 4× Radeon Pro V620 server this post measures.</figcaption>
+</figure>
 
 Most benchmark numbers for local language models fall apart the moment someone tries to reproduce them. Somebody flips a flag, watches the tokens-per-second number move, and posts a conclusion. The number came from a single run, with an unstated batch size and no real idea of what the hardware could do in the first place. I have done exactly this, and the results were worthless.
 
