@@ -23,6 +23,9 @@ header:
   <figcaption>Galactus — the EPYC 7713 / 4× Radeon Pro V620 server this post measures.</figcaption>
 </figure>
 
+**Update:** This post is a snapshot of the method as it first came together, and its numbers and models are frozen in time — some of the models measured here have since been retired from the machine. The living record — current models, results re-baselined on newer llama.cpp builds, the scheduler patch, and the refuted-hypotheses table — is maintained in the [LLM Performance Engineering Notebook](https://github.com/pauldmartinphd/llm-performance-engineering-notebook).
+{: .notice--info}
+
 Most benchmark numbers for local language models fall apart the moment someone tries to reproduce them. Somebody flips a flag, watches the tokens-per-second number move, and posts a conclusion. The number came from a single run, with an unstated batch size and no real idea of what the hardware could do in the first place. I have done exactly this, and the results were worthless.
 
 Over the last few weeks I worked out a way of measuring inference speed that gives me numbers I actually trust, and it turns out to be nothing more than the scientific method pointed at a GPU server. Find the hard physical limit first. Predict what the software should be able to reach against that limit. Then change one thing at a time and see whether the prediction holds. Keep the experiments that fail, because those are the ones that tell you where the real limit is.
