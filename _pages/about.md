@@ -31,5 +31,10 @@ Recurring topics:
 - A repeatable performance-testing methodology
 - Vintage computer and console repair and restoration
 
+The performance work is published as an open lab notebook — the
+[LLM Performance Engineering Notebook](https://github.com/pauldmartinphd/llm-performance-engineering-notebook)
+— with per-machine results, raw logs, patches, and the hypotheses that
+didn't survive measurement.
+
 Everything here is personal, independent work — separate from Dr. Martin's
 [professional research and expert witness practice](https://pauldmartin.phd).
