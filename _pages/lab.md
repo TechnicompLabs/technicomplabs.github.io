@@ -36,8 +36,7 @@ diagnosis, so boards can be brought up and probed outside a case.
 
 Modern compute lives in a mobile rack: a virtualization host with hot-swap
 storage on a UPS, plus the custom-built machines used for the performance
-experiments written up here — including Galactus, the EPYC inference server
-from the [LLM inference series](/posts/2026/08/measuring-local-llm-inference-limits/).
+experiments written up here — including Galactus, the EPYC inference server.
 The ongoing measurements from these machines are published in the
 [LLM Performance Engineering Notebook](https://github.com/pauldmartinphd/llm-performance-engineering-notebook).
 

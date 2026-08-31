@@ -52,8 +52,8 @@ CPU-MoE offload setup, and the patch is being submitted upstream.
 The machine behind the inference measurements: an AMD EPYC 7713 with 2 TB of
 8-channel DDR4 and four AMD Radeon Pro V620 GPUs (128 GB VRAM), built to run
 frontier-class open-weight models locally for about $9,000. The design bets
-everything on memory bandwidth, and the [first post](/posts/2026/08/measuring-local-llm-inference-limits/)
-explains why that bet pays.
+everything on memory bandwidth, and the measurements in the notebook above
+show why that bet pays.
 
 <figure>
   <img src="/assets/images/galactus-build.jpg" alt="Galactus: LLM inference server build with four AMD Radeon Pro V620 GPUs and an EPYC 7713 in a Jonsbo N5 chassis">
