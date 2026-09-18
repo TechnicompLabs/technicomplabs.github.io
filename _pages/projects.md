@@ -15,7 +15,7 @@ here is independent work, released openly where licensing allows.
 
 **Launching soon.** A custom Linux distribution designed as an integrated
 benchtop environment for technical computing, systems analysis, and engineering
-work — built and tuned for the workflows this lab actually runs: firmware
+work, built and tuned for the workflows this lab actually runs: firmware
 analysis, reverse engineering, source code review, and embedded systems
 development.
 
@@ -30,9 +30,9 @@ upstream version.
 
 An open lab notebook of LLM performance engineering: experiments and results
 in finding and raising the inference speed limits of large Mixture-of-Experts
-models, measured on the lab's own servers. It documents the methodology —
-measure the hard physical limit first, predict from a model, then change one
-variable at a time — along with per-model results, raw logs, and a table of
+models, measured on the lab's own servers. It documents the methodology
+(measure the hard physical limit first, predict from a model, then change one
+variable at a time) along with per-model results, raw logs, and a table of
 hypotheses that didn't survive measurement.
 
 **[github.com/pauldmartinphd/llm-performance-engineering-notebook](https://github.com/pauldmartinphd/llm-performance-engineering-notebook)**

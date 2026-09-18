@@ -1,6 +1,6 @@
 # Technicomp Labs
 
-The Technicomp Labs blog — a Jekyll site using the [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/) theme (the same theme family as the academicpages sites), configured as a blog.
+The Technicomp Labs blog, a Jekyll site using the [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/) theme (the same theme family as the academicpages sites), configured as a blog.
 
 ## Run locally
 

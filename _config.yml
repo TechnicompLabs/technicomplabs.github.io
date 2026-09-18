@@ -2,7 +2,7 @@
 title: "Technicomp Labs"
 subtitle: "Systems performance, applied ML, and vintage computing."
 name: "Technicomp Labs"
-description: "Systems performance, LLM inference, applied machine learning, and vintage computer restoration — with real data from the lab of Paul D. Martin, Ph.D."
+description: "Systems performance, LLM inference, applied machine learning, and vintage computer restoration, with real data from the lab of Paul D. Martin, Ph.D."
 url: "https://technicomplabs.io"   # custom domain
 baseurl: ""                         # served at the apex, not a /repo path
 repository: "TechnicompLabs/TechnicompLabs.github.io"   # org Pages repo

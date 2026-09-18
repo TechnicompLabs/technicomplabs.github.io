@@ -20,7 +20,7 @@ restoration.
 
 ## Electronics and repair bench
 
-The main bench is set up for board-level work — a programmable bench power
+The main bench is set up for board-level work: a programmable bench power
 supply, soldering and hot-air rework stations, an oscilloscope, and wall-mounted
 parts organizers stocked with the small components that vintage machines
 consume: capacitors, voltage regulators, fuses, and connector hardware. An
@@ -36,18 +36,18 @@ diagnosis, so boards can be brought up and probed outside a case.
 
 Modern compute lives in a mobile rack: a virtualization host with hot-swap
 storage on a UPS, plus the custom-built machines used for the performance
-experiments written up here — including Galactus, the EPYC inference server.
+experiments written up here, including Galactus, the EPYC inference server.
 The ongoing measurements from these machines are published in the
 [LLM Performance Engineering Notebook](https://github.com/pauldmartinphd/llm-performance-engineering-notebook).
 
 <figure>
   <img src="/assets/images/galactus-build.jpg" alt="Galactus: LLM inference server build with four AMD Radeon Pro V620 GPUs and an EPYC 7713 in a Jonsbo N5 chassis">
-  <figcaption>Galactus — EPYC 7713, 2 TB DDR4, and four Radeon Pro V620s in a Jonsbo N5 chassis.</figcaption>
+  <figcaption>Galactus: EPYC 7713, 2 TB DDR4, and four Radeon Pro V620s in a Jonsbo N5 chassis.</figcaption>
 </figure>
 
 ## Staging and burn-in
 
-A second bench stages machines that are between arrival and restoration —
+A second bench stages machines that are between arrival and restoration:
 network switches and a KVM for bringing several systems up at once, with
 recently finished machines shelved below.
 
