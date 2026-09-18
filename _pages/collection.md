@@ -18,18 +18,18 @@ work itself feeds the repair write-ups on this site.
 ## Compact Macintosh era
 
 The compact Mac shelf runs from the original 128K-style form factor through the
-end of the line (Macintosh Plus, Classic, SE, and SE/30), bookended by a pair
+end of the line — Macintosh Plus, Classic, SE, and SE/30 — bookended by a pair
 of tray-loading iMac G3s.
 
 <figure>
-  <img src="/assets/images/collection-compact-macs.jpg" alt="Shelves of compact Macintosh computers (Macintosh Plus, Classic, SE, SE/30) with iMac G3s at either end, above a row of Performa and Power Macintosh all-in-ones">
+  <img src="/assets/images/collection-compact-macs.jpg" alt="Shelves of compact Macintosh computers — Macintosh Plus, Classic, SE, SE/30 — with iMac G3s at either end, above a row of Performa and Power Macintosh all-in-ones">
   <figcaption>Compact Macs up top; Performa and Power Macintosh all-in-ones on the shelf below.</figcaption>
 </figure>
 
 ## Performa and Power Macintosh years
 
 The mid-90s shelf covers Apple's all-in-one and tower lines through the
-transition to PowerPC: Performa and Power Macintosh all-in-ones, a Quadra
+transition to PowerPC — Performa and Power Macintosh all-in-ones, a Quadra
 tower, Power Mac towers, and a trio of Power Mac G4s, along with a Sun
 workstation from the same era.
 
@@ -41,7 +41,7 @@ workstation from the same era.
 ## Apple II era
 
 The earliest machines in the collection include Apple II-family systems and
-monitors, among them a Bell &amp; Howell "black Apple", plus the Apple IIe
+monitors — among them a Bell &amp; Howell "black Apple" — plus the Apple IIe
 that currently lives on the repair bench.
 
 <figure>
@@ -57,13 +57,13 @@ through the Dreamcast, N64s, GameCubes, Wiis, PlayStations through the PS3,
 and a Saturn or two.
 
 <figure>
-  <img src="/assets/images/collection-consoles.jpg" alt="Closet shelves stacked with game consoles: NES, Super NES, GameCube, Wii, PlayStation 3, Sega Dreamcast, and others">
+  <img src="/assets/images/collection-consoles.jpg" alt="Closet shelves stacked with game consoles — NES, Super NES, GameCube, Wii, PlayStation 3, Sega Dreamcast, and others">
   <figcaption>The console closet: Nintendo, Sega, and Sony hardware spanning roughly two decades.</figcaption>
 </figure>
 
 ## Handhelds and restoration work
 
-Handhelds get the same treatment as the desktops; the Game Boy line in
+Handhelds get the same treatment as the desktops — the Game Boy line in
 particular is a recurring restoration subject: shell swaps, screen
 replacements, and board-level repair.
 
