@@ -18,7 +18,7 @@ work itself feeds the repair write-ups on this site.
 ## Compact Macintosh era
 
 The compact Mac shelf runs from the original 128K-style form factor through the
-end of the line — Macintosh Plus, Classic, SE, and SE/30 — bookended by a pair
+end of the line (Macintosh Plus, Classic, SE, and SE/30), bookended by a pair
 of tray-loading iMac G3s.
 
 <figure>
@@ -41,7 +41,7 @@ workstation from the same era.
 ## Apple II era
 
 The earliest machines in the collection include Apple II-family systems and
-monitors — among them a Bell &amp; Howell "black Apple" — plus the Apple IIe
+monitors, among them a Bell &amp; Howell "black Apple", plus the Apple IIe
 that currently lives on the repair bench.
 
 <figure>
