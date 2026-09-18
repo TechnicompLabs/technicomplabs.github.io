@@ -13,7 +13,7 @@ here is independent work, released openly where licensing allows.
 
 ## Technicomp Benchtop Linux
 
-**Launching soon.** A custom Linux distribution designed as an integrated
+A custom Linux distribution designed as an integrated
 benchtop environment for technical computing, systems analysis, and engineering
 work — built and tuned for the workflows this lab actually runs: firmware
 analysis, reverse engineering, source code review, and embedded systems
