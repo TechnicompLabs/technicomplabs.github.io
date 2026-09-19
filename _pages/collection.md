@@ -40,12 +40,11 @@ workstation from the same era.
 
 ## Apple II era
 
-The earliest machines in the collection include Apple II-family systems and
-monitors, among them a Bell &amp; Howell "black Apple", plus the Apple IIe
-that currently lives on the repair bench.
+The earliest machines in the collection are Apple II-family systems and
+monitors, including the Apple IIe that currently lives on the repair bench.
 
 <figure>
-  <img src="/assets/images/collection-apple-ii.jpg" alt="Metal shelving with Apple II-era computers, monitors, and keyboards, including a black Bell &amp; Howell Apple II">
+  <img src="/assets/images/collection-apple-ii.jpg" alt="Metal shelving with Apple II-era computers, monitors, and keyboards">
   <figcaption>Apple II-era systems and monitors, with more compact Macs and towers behind.</figcaption>
 </figure>
 
