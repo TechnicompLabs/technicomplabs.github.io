@@ -1,15 +1,8 @@
 ---
 title: "Projects"
 permalink: /projects/
-layout: single
-author_profile: true
-toc: true
-toc_sticky: true
-excerpt: "Software and hardware projects from Technicomp Labs, from a purpose-built Linux distribution to open performance research."
+subtitle: "Software, patches, and builds from the lab, released openly where licensing allows."
 ---
-
-The lab's output beyond the writing: software, patches, and builds. Everything
-here is independent work, released openly where licensing allows.
 
 ## Technicomp Benchtop Linux
 

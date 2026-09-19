@@ -1,6 +1,6 @@
 ---
-title: "Blog"
+title: Blog
 permalink: /blog/
-layout: posts
-author_profile: true
+subtitle: Write-ups with real measurements from real hardware.
 ---
+{% include post-list.html %}

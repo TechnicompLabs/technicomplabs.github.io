@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="page-header">
+    <p class="meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>{% if page.categories.size > 0 %} &middot; {{ page.categories | join: ", " }}{% endif %}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.excerpt and page.show_excerpt %}<p class="lede">{{ page.excerpt | strip_html }}</p>{% endif %}
+  </header>
+  {{ content }}
+  <footer class="post-footer">
+    <a href="{{ '/blog/' | relative_url }}">&larr; All posts</a>
+  </footer>
+</article>

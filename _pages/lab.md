@@ -1,17 +1,8 @@
 ---
 title: "The Lab"
 permalink: /lab/
-layout: single
-author_profile: true
-toc: false
-excerpt: "The workshop behind the posts: test benches, instrumentation, and the machines used for performance work and hardware restoration."
-header:
-  og_image: /assets/images/lab-bench-window.jpg
+subtitle: "A purpose-built basement workshop for performance work and hardware restoration."
 ---
-
-The lab is a purpose-built basement workshop that supports both sides of what
-Technicomp Labs does: modern systems-performance work and vintage hardware
-restoration.
 
 <figure>
   <img src="/assets/images/lab-overview.jpg" alt="Workshop overview: workbench with pegboard bin storage, parts organizers, and an open-frame hardware test bench">

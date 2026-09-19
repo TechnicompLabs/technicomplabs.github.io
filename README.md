@@ -1,49 +1,30 @@
 # Technicomp Labs
 
-The Technicomp Labs blog — a Jekyll site using the [Minimal Mistakes](https://mmistakes.github.io/minimal-mistakes/) theme (the same theme family as the academicpages sites), configured as a blog.
+Source for [technicomplabs.io](https://technicomplabs.io), a Jekyll site with its own small theme (no remote theme, no JavaScript). Light mode is graph paper, dark mode is a chalkboard; the layout is in `_layouts/`, the stylesheet in `assets/css/main.css`.
 
 ## Run locally
 
 ```bash
 bundle install
-bundle exec jekyll serve --livereload
+bundle exec jekyll serve --livereload --drafts
 ```
 
-Then open http://localhost:4000. Drafts (in `_drafts/`) show with `--drafts`.
+Then open http://localhost:4000.
 
 ## Write a post
 
-Add a file to `_posts/` named `YYYY-MM-DD-slug.md` with front matter:
+Add `_posts/YYYY-MM-DD-slug.md`:
 
 ```yaml
 ---
 title: "Post title"
-date: 2026-08-08
-permalink: /posts/2026/08/slug/
-excerpt: "One-line summary for listings and SEO."
-categories:
-  - performance
-tags:
-  - llama.cpp
-  - moe
-toc: true
+excerpt: "One or two sentences shown in the post list."
+categories: [performance]
 ---
 ```
 
-## Deploy on GitHub Pages
+Posts publish at `/blog/YYYY/MM/slug/`. Drafts live in `_drafts/` and only build with `--drafts`.
 
-1. Create the repo (e.g. `technicomp-labs`) and push this folder.
-2. In **Settings → Pages**, set **Source: Deploy from a branch**, branch `main`, folder `/ (root)`.
-3. GitHub builds it with Jekyll and serves it. The `remote_theme` and plugins in `_config.yml` are all GitHub Pages compatible, so no Actions workflow is required.
-4. For a custom domain (e.g. `technicomplabs.io`): add a `CNAME` file containing the domain, set `url:`/`baseurl:` in `_config.yml`, and point DNS at GitHub Pages.
+## Pages
 
-## Structure
-
-| Path | Purpose |
-|---|---|
-| `_config.yml` | Site config, theme, author, defaults. |
-| `_posts/` | Blog posts. |
-| `_pages/` | Standalone pages (About, Categories, Tags). |
-| `_data/navigation.yml` | Top navigation bar. |
-| `index.html` | Home page (paginated post feed). |
-| `assets/` | Images and static files. |
+Top-level pages live in `_pages/` with `title`, `permalink`, and an optional `subtitle`. Navigation is `_data/navigation.yml`.
