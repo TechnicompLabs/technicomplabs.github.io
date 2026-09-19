@@ -43,13 +43,7 @@ html { font-size: 17px; }
 body {
   margin: 0;
   color: var(--ink);
-  background-color: var(--paper);
-  background-image:
-    linear-gradient(var(--grid-major) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
-    linear-gradient(var(--grid-minor) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
-  background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+  background-color: var(--sheet);
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -58,22 +52,16 @@ body {
 a { color: var(--wood); text-decoration: none; border-bottom: 1px solid transparent; }
 a:hover { color: var(--wood-hover); border-bottom-color: currentColor; }
 
-/* The sheet: a full-height page, with the graph paper showing in the gutters */
+/* Page column */
 .sheet {
-  max-width: calc(var(--measure) + 8rem);
+  max-width: var(--measure);
   min-height: 100vh;
   margin: 0 auto;
-  padding: 0 4rem;
-  background: var(--sheet);
-  border-left: 1px solid var(--sheet-edge);
-  border-right: 1px solid var(--sheet-edge);
+  padding: 0 1.25rem;
   display: flex;
   flex-direction: column;
 }
 .site-main { flex: 1; }
-@media (max-width: 48rem) {
-  .sheet { padding: 0 1.25rem; border: 0; }
-}
 
 /* Header */
 .site-header {
@@ -128,15 +116,25 @@ strong { font-weight: 600; }
 .meta { margin-bottom: 0.5rem; }
 
 /* Figures */
-figure { margin: 2rem 0; }
+figure {
+  margin: 2.25rem 0;
+  padding: 1rem;
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+  border: 1px solid var(--sheet-edge);
+}
 figure img, .page img, .post img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 2px;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--sheet-edge);
 }
-figcaption { margin-top: 0.6rem; line-height: 1.5; }
+figcaption { margin-top: 0.75rem; line-height: 1.5; }
 
 /* Post list */
 .post-list { list-style: none; padding: 0; margin: 0; }
