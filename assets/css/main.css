@@ -2,8 +2,10 @@
    Light = graph paper, dark = chalkboard, hardwood for the single accent. */
 
 :root {
-  --paper: #f6f4ee;
-  --grid: rgba(70, 60, 45, 0.09);
+  --paper: #f7fafd;
+  --grid: rgba(96, 150, 210, 0.28);
+  --sheet: #ffffff;
+  --sheet-edge: rgba(40, 60, 90, 0.12);
   --ink: #2a2724;
   --ink-muted: #6f6a62;
   --wood: #8a5a2b;
@@ -18,8 +20,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #262b29;
-    --grid: rgba(233, 230, 221, 0.06);
+    --paper: #171b1a;
+    --grid: rgba(120, 160, 205, 0.14);
+    --sheet: #262b29;
+    --sheet-edge: rgba(0, 0, 0, 0.5);
     --ink: #e9e6dd;
     --ink-muted: #a7a69e;
     --wood: #d9a86c;
@@ -51,11 +55,22 @@ body {
 a { color: var(--wood); text-decoration: none; border-bottom: 1px solid transparent; }
 a:hover { color: var(--wood-hover); border-bottom-color: currentColor; }
 
+/* The sheet: white paper laid on the graph paper */
+.sheet {
+  max-width: calc(var(--measure) + 6rem);
+  margin: 3rem auto;
+  padding: 0 3rem;
+  background: var(--sheet);
+  border: 1px solid var(--sheet-edge);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px -16px rgba(20, 40, 70, 0.25);
+}
+@media (max-width: 48rem) {
+  .sheet { margin: 0; padding: 0 1.25rem; border-left: 0; border-right: 0; box-shadow: none; }
+}
+
 /* Header */
 .site-header {
-  max-width: var(--measure);
-  margin: 0 auto;
-  padding: 2.5rem 1.25rem 1.25rem;
+  padding: 2.5rem 0 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -83,9 +98,7 @@ a:hover { color: var(--wood-hover); border-bottom-color: currentColor; }
 
 /* Main column */
 .site-main {
-  max-width: var(--measure);
-  margin: 0 auto;
-  padding: 2.5rem 1.25rem 4rem;
+  padding: 2.5rem 0 4rem;
 }
 
 h1, h2, h3 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 0.75rem; }
@@ -177,9 +190,7 @@ blockquote { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--
 
 /* Footer */
 .site-footer {
-  max-width: var(--measure);
-  margin: 0 auto;
-  padding: 2rem 1.25rem 3rem;
+  padding: 2rem 0 2.5rem;
   border-top: 1px solid var(--rule);
   font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.78rem;
