@@ -1,5 +1,4 @@
-/* Technicomp Labs: an engineering notebook.
-   Light = graph paper, dark = chalkboard, hardwood for the single accent. */
+/* Technicomp Labs: white page, ink rules, walnut links, chalkboard code. */
 
 :root {
   --paper: #fbfcfe;
@@ -19,7 +18,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --paper: #14171a;
-        --sheet: #262b29;
+    --sheet: #262b29;
     --sheet-edge: rgba(0, 0, 0, 0.6);
     --ink: #e9e6dd;
     --ink-muted: #a7a69e;
