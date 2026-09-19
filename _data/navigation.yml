@@ -1,13 +1,10 @@
-main:
-  - title: "Home"
-    url: /
-  - title: "Blog"
-    url: /blog/
-  - title: "Projects"
-    url: /projects/
-  - title: "The Lab"
-    url: /lab/
-  - title: "The Collection"
-    url: /collection/
-  - title: "About"
-    url: /about/
+- title: Blog
+  url: /blog/
+- title: Projects
+  url: /projects/
+- title: Lab
+  url: /lab/
+- title: Collection
+  url: /collection/
+- title: About
+  url: /about/

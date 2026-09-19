@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  {% feed_meta %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="{{ '/' | relative_url }}">Technicomp Labs</a>
+    <nav class="site-nav">
+      {% for item in site.data.navigation %}
+        <a href="{{ item.url | relative_url }}"{% if page.url == item.url or page.url contains item.url and item.url != '/' %} class="current"{% endif %}>{{ item.title }}</a>
+      {% endfor %}
+    </nav>
+  </header>
+
+  <main class="site-main">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <p>Technicomp Labs is the independent workshop of <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a></p>
+    <p><a href="https://github.com/pauldmartinphd">GitHub</a> &middot; <a href="{{ '/feed.xml' | relative_url }}">Feed</a> &middot; &copy; {{ site.time | date: "%Y" }} Technicomp Labs</p>
+  </footer>
+</body>
+</html>
