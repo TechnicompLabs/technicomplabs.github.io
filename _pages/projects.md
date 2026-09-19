@@ -12,7 +12,7 @@ The distribution ships tuned defaults rather than stock ones: kernel and network
 
 Benchtop Linux also grows out of research into vulnerability divergence and patch management across Linux distributions. It is an applied answer to a question raised by that work: how a stable distribution can deliver enterprise-grade reliability without the incomplete backports and version drift that let a package's real vulnerability exposure diverge from its upstream version.
 
-The first disk images build on the openSUSE Build Service; the graphical installer and branding packages are the next packaging tasks. A dedicated site at benchtoplinux.org is in preparation.
+Benchtop Linux is in alpha: installable disk images are released through the openSUSE Build Service, with the graphical installer and branding packages as the next packaging tasks. A dedicated site at benchtoplinux.org is in preparation.
 
 - [Source and packaging](https://github.com/TechnicompLabs) (`benchtop-image`, `benchtop-settings`, `benchtop-patterns`)
 - [Build Service project](https://build.opensuse.org/project/show/home:technicomp)
