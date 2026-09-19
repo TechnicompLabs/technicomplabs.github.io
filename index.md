@@ -10,22 +10,25 @@ permalink: /
 
 <ul class="index">
   <li>
-    <span class="n">01</span>
+    <a href="/lab/"><img src="/assets/images/lab-bench-window.jpg" alt="Electronics workbench with parts organizers, an Apple IIe, and an open-frame hardware test bench"></a>
     <div>
+      <span class="n">01</span>
       <a class="title" href="/lab/">The Lab</a>
       <p>The workshop behind the posts: repair bench, instrumentation, and the machines used for performance work and hardware restoration.</p>
     </div>
   </li>
   <li>
-    <span class="n">02</span>
+    <a href="/collection/"><img src="/assets/images/collection-compact-macs.jpg" alt="Shelves of compact Macintosh computers"></a>
     <div>
+      <span class="n">02</span>
       <a class="title" href="/collection/">The Collection</a>
       <p>Vintage computers and game consoles, kept in working order rather than on display.</p>
     </div>
   </li>
   <li>
-    <span class="n">03</span>
+    <a href="/projects/"><img src="/assets/images/galactus-build.jpg" alt="Server build with four GPUs in a compact chassis"></a>
     <div>
+      <span class="n">03</span>
       <a class="title" href="/projects/">Projects</a>
       <p>Technicomp Benchtop Linux, the LLM Performance Engineering Notebook, and the hardware they run on.</p>
     </div>
