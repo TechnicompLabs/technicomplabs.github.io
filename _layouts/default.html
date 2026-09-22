@@ -5,22 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% seo %}
   {% feed_meta %}
+  <link rel="preload" href="{{ '/assets/fonts/nanumsquareround-EB-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   <link rel="icon" href="{{ '/assets/favicon.png' | relative_url }}" type="image/png">
   <link rel="apple-touch-icon" href="{{ '/assets/apple-touch-icon.png' | relative_url }}">
 </head>
 <body>
-<div class="sheet">
   <header class="site-header">
-    <a class="wordmark" href="{{ '/' | relative_url }}"><img class="mark" src="{{ '/assets/images/mark.png' | relative_url }}" alt="" width="28" height="24">Technicomp Labs</a>
-    <nav class="site-nav">
-      {% for item in site.data.navigation %}
-        <a href="{{ item.url | relative_url }}"{% if page.url == item.url or page.url contains item.url and item.url != '/' %} class="current"{% endif %}>{{ item.title }}</a>
-      {% endfor %}
-    </nav>
+    <div class="wrap header-row">
+      <a class="lockup" href="{{ '/' | relative_url }}" aria-label="Technicomp Labs home">
+        <picture>
+          <source srcset="{{ '/assets/images/mark-light.png' | relative_url }}" media="(prefers-color-scheme: dark)">
+          <img class="lockup-mark" src="{{ '/assets/images/mark.png' | relative_url }}" alt="" width="46" height="39">
+        </picture>
+        <span class="lockup-text">
+          <span class="lockup-name">Technicomp</span>
+          <span class="lockup-sub">Labs</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        {% for item in site.data.navigation %}
+          <a href="{{ item.url | relative_url }}"{% if page.url contains item.url %} class="current" aria-current="page"{% endif %}>{{ item.title }}</a>
+        {% endfor %}
+      </nav>
+    </div>
   </header>
 
   <main class="site-main">
@@ -28,9 +39,17 @@
   </main>
 
   <footer class="site-footer">
-    <p>Technicomp Labs is the independent workshop of <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a></p>
-    <p><a href="https://github.com/pauldmartinphd">GitHub</a> &middot; <a href="{{ '/feed.xml' | relative_url }}">Feed</a> &middot; &copy; {{ site.time | date: "%Y" }} Technicomp Labs</p>
+    <div class="wrap footer-row">
+      <p class="footer-id">
+        <img src="{{ '/assets/images/mark.png' | relative_url }}" alt="" width="22" height="19" class="footer-mark">
+        Technicomp Labs, the independent workshop of <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a>
+      </p>
+      <p class="footer-links">
+        <a href="https://github.com/TechnicompLabs">GitHub</a>
+        <a href="{{ '/feed.xml' | relative_url }}">Feed</a>
+        <span>&copy; {{ site.time | date: "%Y" }}</span>
+      </p>
+    </div>
   </footer>
-</div>
 </body>
 </html>
