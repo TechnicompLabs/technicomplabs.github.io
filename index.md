@@ -61,8 +61,8 @@ permalink: /
   {% if site.posts.size > 0 %}
   <section class="section">
     <div class="section-head">
-      <span class="num">04</span><h2>Writing</h2>
-      <a class="more" href="/blog/">All writing &rarr;</a>
+      <span class="num">04</span><h2>Blog</h2>
+      <a class="more" href="/blog/">All posts &rarr;</a>
     </div>
     {% include post-list.html limit=5 %}
   </section>
