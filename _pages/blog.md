@@ -1,7 +1,7 @@
 ---
-title: "Writing"
-kicker: "Writing"
+title: "Blog"
+kicker: "Blog"
 permalink: /blog/
-subtitle: Write-ups with real measurements from real hardware.
+subtitle: "Technical posts from the lab: systems, software, hardware, and whatever is on the bench."
 ---
 {% include post-list.html %}
