@@ -1,16 +1,19 @@
 {% assign posts = include.posts | default: site.posts %}
 {% if posts.size > 0 %}
-<ul class="post-list">
+<ol class="archive">
   {% for post in posts limit: include.limit %}
-  <li>
-    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-    <div>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      {% if post.excerpt %}<p>{{ post.excerpt | strip_html | truncate: 180 }}</p>{% endif %}
-    </div>
-  </li>
+    {% assign year = post.date | date: "%Y" %}
+    <li>
+      <span class="archive-year">{% if year != prev_year %}{{ year }}{% endif %}</span>
+      <time class="archive-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d" }}</time>
+      <div class="archive-entry">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        {% if post.excerpt %}<p>{{ post.excerpt | strip_html | truncate: 180 }}</p>{% endif %}
+      </div>
+    </li>
+    {% assign prev_year = year %}
   {% endfor %}
-</ul>
+</ol>
 {% else %}
-<p class="muted">Nothing published yet.</p>
+<p class="empty">The first write-ups are in progress.</p>
 {% endif %}

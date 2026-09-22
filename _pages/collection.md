@@ -1,5 +1,6 @@
 ---
-title: "The Collection"
+title: "Four decades of machines"
+kicker: "The Collection"
 permalink: /collection/
 subtitle: "Vintage computers and game consoles, kept in working order rather than on display."
 ---

@@ -1,5 +1,6 @@
 ---
-title: "The Lab"
+title: "Bench, rack, and instruments"
+kicker: "The Lab"
 permalink: /lab/
 subtitle: "A purpose-built basement workshop for performance work and hardware restoration."
 ---

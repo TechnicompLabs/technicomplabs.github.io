@@ -1,5 +1,6 @@
 ---
-title: About
+title: "About the lab"
+kicker: "About"
 permalink: /about/
 ---
 
