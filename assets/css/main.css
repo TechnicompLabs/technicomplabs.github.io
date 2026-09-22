@@ -227,7 +227,9 @@ th { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spac
   html { font-size: 16px; }
   .wrap { padding: 0 1.25rem; }
   .measure { padding: 0 1.25rem; }
-  .site-nav { gap: 1.1rem; }
+  .site-nav { gap: 0.95rem; }
+  .site-nav a { font-size: 0.66rem; letter-spacing: 0.08em; }
+  .section-head .more { display: none; }
   .cards { grid-template-columns: 1fr; }
   .hero { padding: 2rem 0 3rem; }
   h1 { font-size: 2.1rem; }
