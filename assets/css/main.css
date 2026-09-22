@@ -147,7 +147,7 @@ th { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spac
 .section { padding: 3.5rem 0 0; }
 .section-head { display: flex; align-items: baseline; gap: 0.9rem; margin: 0 0 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
 .section-head .num { font-family: var(--mono); font-size: 0.85rem; font-weight: 500; color: var(--accent); }
-.section-head h2 { margin: 0; font-size: 1.5rem; }
+.section-head h2 { margin: 0; font-size: 1.5rem; font-weight: 800; }
 .section-head .more { margin-left: auto; }
 
 /* Chalkboard feature */
@@ -202,6 +202,10 @@ th { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spac
 .archive-entry a:hover { color: var(--accent); }
 .archive-entry p { margin: 0.3rem 0 0; color: var(--ink-2); font-size: 0.98rem; }
 .empty { font-style: italic; color: var(--ink-3); }
+
+/* Kickers keep their styling inside components */
+.split p.kicker, .card-body p.kicker { font-size: 0.72rem; color: var(--accent); margin: 0 0 0.6rem; }
+.split p.kicker { margin-bottom: 0.9rem; }
 
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--rule); padding: 2rem 0 2.5rem; }
