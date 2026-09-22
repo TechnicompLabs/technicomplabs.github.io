@@ -3,6 +3,7 @@ description: "Systems performance, applied machine learning, and vintage computi
 url: "https://technicomplabs.io"
 baseurl: ""
 author: "Paul D. Martin, Ph.D."
+logo: /assets/images/logo.png
 timezone: America/New_York
 
 markdown: kramdown

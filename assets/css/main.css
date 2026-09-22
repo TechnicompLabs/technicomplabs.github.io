@@ -77,6 +77,9 @@ a:hover { color: var(--wood-hover); border-bottom-color: currentColor; }
   color: var(--ink);
 }
 .wordmark:hover { color: var(--wood); border-bottom-color: transparent; }
+.wordmark .mark { display: inline-block; width: 28px; height: 24px; object-fit: contain; vertical-align: -0.35em; margin-right: 0.6rem; }
+.home-header h1 { margin-bottom: 1.25rem; }
+.home-header h1 img { display: block; width: 360px; max-width: 70%; height: auto; border: 0; }
 .site-nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
 .site-nav a {
   font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
