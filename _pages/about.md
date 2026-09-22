@@ -4,19 +4,12 @@ kicker: "About"
 permalink: /about/
 ---
 
-Technicomp Labs is the independent workshop of [Paul D. Martin, Ph.D.](https://pauldmartin.phd) It covers two things that turn out to be the same hobby: measuring what modern systems can really do, and keeping four decades of computing hardware alive.
+Technicomp Labs is the independent workshop of [Paul D. Martin, Ph.D.](https://pauldmartin.phd), a place to build software, measure systems, and keep old hardware running.
 
-**The performance side** is systems-performance and applied-ML work written up in detail: real measurements, real hardware, and the reasoning that connects them. The focus is the engineering under the results: how to find a system's true limits, how to test a change without fooling yourself, and how to tell a real speedup from noise. Posts lean on data from [the lab](/lab/) rather than rules of thumb, and they keep the dead ends in; the hypotheses that got refuted are usually as useful as the ones that held.
+**Projects.** The lab's main project is [Technicomp Benchtop Linux](/projects/), the operating system for the technical workbench. Other work is released openly where licensing allows, including the [LLM Performance Engineering Notebook](https://github.com/pauldmartinphd/llm-performance-engineering-notebook), an open lab notebook on the inference speed limits of large Mixture-of-Experts models.
 
-**The restoration side** is [a working collection](/collection/) of vintage computers and game consoles. Machines here are repaired and kept running, not just shelved, and the board-level repair work feeds its own write-ups.
+**The blog.** [Technical posts](/blog/) on whatever is on the bench: operating systems and Linux internals, performance and benchmarking, applied machine learning, security, hardware and firmware, repair and restoration, and the tools and methods behind all of it. Posts lean on measurements from [the lab](/lab/) where measurements apply, and they keep the dead ends in; the approaches that didn't work are often as useful as the ones that did.
 
-Recurring topics:
-
-- LLM inference performance (llama.cpp, Mixture-of-Experts offload, speculative decode)
-- Memory-bandwidth and CPU/GPU behavior on real workloads
-- A repeatable performance-testing methodology
-- Vintage computer and console repair and restoration
-
-The performance work is published as an open lab notebook, the [LLM Performance Engineering Notebook](https://github.com/pauldmartinphd/llm-performance-engineering-notebook), with per-machine results, raw logs, patches, and the hypotheses that didn't survive measurement.
+**The collection.** [A working collection](/collection/) of vintage computers and game consoles, repaired and kept running rather than shelved. The restoration work feeds its own posts.
 
 Everything here is personal, independent work, separate from Dr. Martin's [professional research and expert witness practice](https://pauldmartin.phd).
