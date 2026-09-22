@@ -3,8 +3,8 @@ layout: default
 title: Technicomp Labs
 permalink: /
 ---
-<section class="page-header">
-  <h1>Technicomp Labs</h1>
+<section class="page-header home-header">
+  <h1><img src="/assets/images/logo.png" alt="Technicomp Labs" width="360"></h1>
   <p class="lede">Systems performance, applied machine learning, and vintage computing. Measured rather than guessed, from the workshop of <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a></p>
 </section>
 
