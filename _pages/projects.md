@@ -5,17 +5,11 @@ kicker: "Projects"
 subtitle: "Software, patches, and builds from the lab, released openly where licensing allows."
 ---
 
-{% include benchtop.html %}
+## Technicomp Benchtop Linux
 
-## About the distribution
+The operating system for the technical workbench: an immutable, LTS-based GNOME desktop that rolls, tuned for low interactive latency and ready for AI, virtualization, development, security, audio, and content-creation work. Now in alpha.
 
-Benchtop Linux keeps openSUSE Aeon's foundation (read-only btrfs snapshots, UEFI with systemd-boot, and Ignition first-boot configuration) and departs from it in two deliberate ways: a verbatim upstream kernel.org LTS kernel, and GNOME held one release behind current, both delivered through the openSUSE Build Service. The kernel is patched to support widely used hardware, including Microsoft Surface and Apple MacBooks, and ARM will be a supported architecture in the future.
-
-It ships tuned defaults rather than stock ones: kernel and network sysctls, BFQ and Kyber I/O scheduling, transparent-huge-page and multi-generational-LRU policy, and realtime-audio limits, all layered as drop-ins that sort after openSUSE's vendor defaults and stay overridable. The goal is a desktop that stays responsive under heavy load.
-
-Benchtop Linux also grows out of research into vulnerability divergence and patch management across Linux distributions. It is an applied answer to a question raised by that work: how a stable distribution can deliver enterprise-grade reliability without the incomplete backports and version drift that let a package's real vulnerability exposure diverge from its upstream version.
-
-Benchtop Linux is in alpha: installable disk images are released through the openSUSE Build Service, with the graphical installer and branding packages as the next packaging tasks. A dedicated site at benchtoplinux.org is in preparation.
+[About Benchtop Linux &rarr;](/benchtop/)
 
 ## LLM Performance Engineering Notebook
 

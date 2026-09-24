@@ -207,6 +207,12 @@ th { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spac
 .split p.kicker, .card-body p.kicker { font-size: 0.72rem; color: var(--accent); margin: 0 0 0.6rem; }
 .split p.kicker { margin-bottom: 0.9rem; }
 
+/* Product page */
+.product-header { border-bottom: 0; margin-bottom: 0; padding-bottom: 2rem; max-width: 50rem; }
+.product-header h1 { font-size: clamp(2.2rem, 4.8vw, 3.3rem); line-height: 1.06; letter-spacing: -0.025em; }
+.product-body { padding-top: 1rem; }
+.product-body h2:first-child { margin-top: 2.5rem; }
+
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--rule); padding: 2rem 0 2.5rem; }
 .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem 2rem; flex-wrap: wrap; }
