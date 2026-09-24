@@ -34,7 +34,7 @@ Benchtop Linux grows out of research into vulnerability divergence and patch man
 
 ## Status
 
-Benchtop Linux is in alpha. Installable disk images are released through the openSUSE Build Service; the graphical installer and branding packages are the next packaging tasks. A dedicated site at benchtoplinux.org is in preparation.
+Benchtop Linux is in alpha. Installable disk images are released through the openSUSE Build Service.
 
 - [Source and packaging on GitHub](https://github.com/TechnicompLabs)
 - [Build Service project](https://build.opensuse.org/project/show/home:technicomp)
