@@ -168,6 +168,7 @@ th { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spac
 .board-kicker { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--chalk-accent); margin: 0 0 1rem; }
 .board-title { font-family: var(--display); font-weight: 800; font-size: clamp(1.8rem, 3.6vw, 2.5rem); line-height: 1.08; letter-spacing: -0.02em; color: var(--chalk); margin: 0 0 1.1rem; }
 .board-text p { color: var(--chalk-2); }
+.board-lead { font-family: var(--display); font-weight: 700; font-size: 1.25rem; color: var(--chalk) !important; margin-bottom: 0.9rem; }
 .board-motto { font-style: italic; color: var(--chalk) !important; }
 .board-links { display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; margin: 1.6rem 0 0; }
 .board-links a { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid rgba(236, 232, 223, 0.35); padding-bottom: 0.15rem; }

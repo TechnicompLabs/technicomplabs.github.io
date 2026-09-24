@@ -20,11 +20,11 @@ description: "Technicomp Benchtop Linux, the operating system for the technical 
 
 Benchtop Linux is immutable. Each update installs as a new snapshot, and you can roll back to the previous one if an update causes a problem. The system rolls, but its core packages, including the kernel, track LTS releases, and GNOME stays one release behind current. Security fixes arrive promptly, and there are no major-version upgrades to manage. Applications come from Flatpak and command-line tools from Homebrew, which keeps the base system small.
 
-The design aims for stability. A separate research project is testing whether it also improves security compared with conventional stable distributions, which backport fixes into older package versions.
+It's designed for stability. Whether it's also more secure than conventional stable distributions, which backport fixes into older package versions, is the subject of separate research.
 
 ## Tuned for the bench
 
-Benchtop Linux prioritizes low interactive latency and workstation stability, so the desktop stays responsive even when the machine is busy. It is built for the threads of technical work: AI, virtualization, software development, system administration, security, reverse engineering, and content creation.
+Benchtop Linux is tuned for low latency and stability, so the desktop stays responsive even when the machine is busy. It's ready out of the box for every thread of your work: AI, virtualization, software development, system administration, security, reverse engineering, and content creation.
 
 ## Hardware
 
