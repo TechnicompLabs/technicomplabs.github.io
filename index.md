@@ -14,7 +14,7 @@ permalink: /
   <section class="section">
     <div class="section-head">
       <span class="num">01</span><h2>Benchtop Linux</h2>
-      <a class="more" href="/projects/">All projects &rarr;</a>
+      <a class="more" href="/benchtop/">Details &rarr;</a>
     </div>
     {% include benchtop.html %}
   </section>
