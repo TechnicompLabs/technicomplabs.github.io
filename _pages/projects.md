@@ -7,7 +7,7 @@ subtitle: "Software, patches, and builds from the lab, released openly where lic
 
 ## Technicomp Benchtop Linux
 
-The operating system for the technical workbench: an immutable, LTS-based GNOME desktop that rolls, tuned for low interactive latency and ready for AI, virtualization, development, security, audio, and content-creation work. Now in alpha.
+The operating system for the technical workbench: an immutable, LTS-based GNOME desktop that rolls, tuned for low interactive latency and built for the threads of technical work: AI, virtualization, software development, system administration, security, reverse engineering, and content creation. Now in alpha.
 
 [About Benchtop Linux &rarr;](/benchtop/)
 

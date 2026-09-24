@@ -22,7 +22,7 @@ Like openSUSE MicroOS, Benchtop Linux is immutable. Each update installs as a ne
 
 ## Tuned for the bench
 
-Benchtop Linux prioritizes low interactive latency and workstation stability, so the desktop stays responsive even when the machine is busy. It comes ready for AI, virtualization, software development, system administration, security, audio, and content creation.
+Benchtop Linux prioritizes low interactive latency and workstation stability, so the desktop stays responsive even when the machine is busy. It is built for the threads of technical work: AI, virtualization, software development, system administration, security, reverse engineering, and content creation.
 
 ## Hardware
 
