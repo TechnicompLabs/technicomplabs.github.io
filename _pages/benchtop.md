@@ -18,17 +18,17 @@ description: "Technicomp Benchtop Linux, the operating system for the technical 
 
 ## Rolling updates on an LTS foundation
 
-Benchtop Linux is immutable. Each update installs as a new snapshot, and you can roll back to the previous one if an update causes a problem. The system rolls, but its core packages track LTS releases, and the desktop runs GNOME Oldstable. Security fixes arrive promptly, and there are no major-version upgrades to manage. Applications come from Flatpak and command-line tools from Homebrew, which keeps the base system small.
+Benchtop Linux is immutable. Each update is installed as a new snapshot, and the previous snapshot can be restored if an update causes a problem. The system is a rolling release, but its core packages track long-term-support releases and its desktop is GNOME Oldstable. Security fixes arrive promptly, and there are no major-version upgrades to manage. Applications are installed through Flatpak and command-line tools through Homebrew, which keeps the base system small.
 
-It's designed for stability. Whether it's also more secure than conventional stable distributions, which backport fixes into older package versions, is the subject of separate research.
+Benchtop Linux is designed for stability. Whether its release model also improves security relative to conventional stable distributions, which backport fixes into older package versions, is the subject of separate research.
 
 ## Tuned for the bench
 
-Benchtop Linux is tuned for low latency and stability, so the desktop stays responsive even when the machine is busy. It's ready out of the box for every thread of your work: AI, virtualization, software development, system administration, security, reverse engineering, and content creation.
+Benchtop Linux is tuned for low interactive latency and stability, and its desktop remains responsive when the system is under heavy load. It supports the following threads of technical work without additional configuration: AI, virtualization, software development, system administration, security, reverse engineering, and content creation.
 
 ## Hardware
 
-Benchtop Linux runs on workstation-class x86 hardware and ships two kernels, LTS and current, both patched for hardware support. It's also optimized for Microsoft Surface devices, Apple MacBooks, Lenovo ThinkPads, and ASUS and Razer laptops, along with common peripherals. ARM support is coming.
+Benchtop Linux supports workstation-class x86 hardware and ships two kernels, a long-term-support kernel and a current kernel, both patched for hardware support. It is also optimized for Microsoft Surface devices, Apple MacBooks, Lenovo ThinkPads, and ASUS and Razer laptops, as well as common peripherals. Support for ARM is planned.
 
 ## Status
 
