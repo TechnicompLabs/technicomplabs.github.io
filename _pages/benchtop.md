@@ -18,7 +18,7 @@ description: "Technicomp Benchtop Linux, the operating system for the technical 
 
 ## The LTS distro that rolls
 
-Benchtop Linux keeps openSUSE Aeon's foundation (read-only btrfs snapshots, UEFI with systemd-boot, and Ignition first-boot configuration) and departs from it in two deliberate ways: a verbatim upstream kernel.org LTS kernel, and GNOME held one release behind current, both delivered through the openSUSE Build Service. Core packages stay on LTS releases while the rest of the system rolls, so fixes arrive promptly without every upgrade being a new major version. Graphical applications come from Flatpak and command-line tooling from Homebrew, which keeps the base small.
+Like openSUSE MicroOS, Benchtop Linux is immutable. Each update installs as a new snapshot, and you can roll back to the previous one if an update causes a problem. The system rolls, but its core packages, including the kernel, track LTS releases, and GNOME stays one release behind current. Security fixes arrive promptly, and there are no major-version upgrades to manage. Applications come from Flatpak and command-line tools from Homebrew, which keeps the base system small.
 
 ## Tuned for the bench
 
