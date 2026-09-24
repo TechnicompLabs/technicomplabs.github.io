@@ -90,6 +90,7 @@ a:hover { color: var(--accent-ink); text-decoration-color: currentColor; }
 }
 .site-nav a:hover { color: var(--ink); border-bottom-color: var(--rule); }
 .site-nav a.current { color: var(--accent); border-bottom-color: var(--accent); }
+.nav-short { display: none; }
 
 .site-main { padding: 2rem 0 5rem; }
 
@@ -233,8 +234,11 @@ th { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spac
   html { font-size: 16px; }
   .wrap { padding: 0 1.25rem; }
   .measure { padding: 0 1.25rem; }
-  .site-nav { gap: 0.95rem; }
-  .site-nav a { font-size: 0.66rem; letter-spacing: 0.08em; }
+  .site-nav { gap: 0.9rem; flex-wrap: nowrap; overflow-x: auto; width: 100%; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .site-nav::-webkit-scrollbar { display: none; }
+  .site-nav a { font-size: 0.64rem; letter-spacing: 0.07em; white-space: nowrap; flex: none; }
+  .nav-long { display: none; }
+  .nav-short { display: inline; }
   .section-head .more { display: none; }
   .cards { grid-template-columns: 1fr; }
   .hero { padding: 2rem 0 3rem; }

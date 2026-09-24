@@ -28,7 +28,7 @@
       </a>
       <nav class="site-nav" aria-label="Primary">
         {% for item in site.data.navigation %}
-          <a href="{{ item.url | relative_url }}"{% if page.url contains item.url %} class="current" aria-current="page"{% endif %}>{{ item.title }}</a>
+          <a href="{{ item.url | relative_url }}"{% if page.url contains item.url %} class="current" aria-current="page"{% endif %}>{% if item.short %}<span class="nav-long">{{ item.title }}</span><span class="nav-short">{{ item.short }}</span>{% else %}{{ item.title }}{% endif %}</a>
         {% endfor %}
       </nav>
     </div>
