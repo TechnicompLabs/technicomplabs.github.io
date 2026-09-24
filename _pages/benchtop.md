@@ -28,7 +28,7 @@ Benchtop Linux is tuned for low interactive latency and stability, and its deskt
 
 ## Hardware
 
-Benchtop Linux supports workstation-class x86 hardware and ships two kernels, a long-term-support kernel and a current kernel, both patched for hardware support. It is also optimized for Microsoft Surface devices, Apple MacBooks, Lenovo ThinkPads, and ASUS and Razer laptops, as well as common peripherals. Support for ARM is planned.
+Benchtop Linux supports workstation-class x86 and ARM hardware and ships two kernels, a long-term-support kernel and a current kernel, both patched for hardware support. It is also optimized for Microsoft Surface devices, Apple MacBooks, Lenovo ThinkPads, and ASUS and Razer laptops, as well as common peripherals.
 
 ## Status
 
