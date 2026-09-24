@@ -25,6 +25,8 @@ Flatpak provides applications and Homebrew provides command-line tools. Both are
 
 Benchtop Linux is tuned for low interactive latency and stability, so that its desktop remains responsive under heavy load.
 
+Benchtop Linux runs on x86 and ARM workstations. Its LTS and Current kernels include patches for laptops, tablets, convertibles, and common peripherals.
+
 ## Supported workflows
 
 <dl class="threads">
@@ -36,10 +38,6 @@ Benchtop Linux is tuned for low interactive latency and stability, so that its d
   <div><dt>Reverse engineering</dt><dd>Disassembly, decompilation, and debugging</dd></div>
   <div><dt>Content creation</dt><dd>Audio, video, graphics, and publishing tools</dd></div>
 </dl>
-
-## Hardware
-
-Benchtop Linux runs on x86 and ARM workstations. Its LTS and Current kernels include patches for laptops, tablets, convertibles, and common peripherals.
 
 ## Status
 
