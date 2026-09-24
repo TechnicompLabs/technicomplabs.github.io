@@ -25,7 +25,7 @@ Flatpak provides applications and Homebrew provides command-line tools. Both are
 
 Benchtop Linux is tuned for low interactive latency and stability, so that its desktop remains responsive under heavy load.
 
-## Threads of technical work
+## Supported workflows
 
 <dl class="threads">
   <div><dt>AI</dt><dd>Local inference and model development</dd></div>
