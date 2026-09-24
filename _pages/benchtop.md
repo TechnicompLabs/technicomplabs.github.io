@@ -33,7 +33,7 @@ Benchtop Linux is tuned for low interactive latency and stability, so that its d
   <div><dt>Virtualization</dt><dd>KVM and QEMU virtual machines and containers</dd></div>
   <div><dt>Software development</dt><dd>Editors, debuggers, and build tools</dd></div>
   <div><dt>System administration and DevOps</dt><dd>Remote access, configuration management, backup, and storage tools</dd></div>
-  <div><dt>Security</dt><dd>Network analysis, forensics, and password auditing</dd></div>
+  <div><dt>Security</dt><dd>Vulnerability assessment, network analysis, and digital forensics</dd></div>
   <div><dt>Reverse engineering</dt><dd>Disassembly, decompilation, and debugging</dd></div>
   <div><dt>Content creation</dt><dd>Audio, video, graphics, and publishing tools</dd></div>
 </dl>
