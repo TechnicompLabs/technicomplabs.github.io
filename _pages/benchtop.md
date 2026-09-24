@@ -18,17 +18,29 @@ description: "Technicomp Benchtop Linux, the operating system for the technical 
 
 ## Rolling updates on an LTS foundation
 
-Benchtop Linux is immutable. Each update is installed as a new snapshot, and the previous snapshot can be restored if an update causes a problem. The system is a rolling release, but its core packages track long-term-support releases and its desktop is GNOME Oldstable. Security fixes arrive promptly, and there are no major-version upgrades to manage. Applications are installed through Flatpak and command-line tools through Homebrew, which keeps the base system small.
-
-Benchtop Linux is designed for stability. Whether its release model also improves security relative to conventional stable distributions, which backport fixes into older package versions, is the subject of separate research.
+Benchtop Linux is immutable. Each update is installed as a new snapshot, and the previous snapshot can be restored if an update causes a problem. Even though the system uses a rolling release model, its core packages track long-term-support releases and its desktop is GNOME Oldstable. Security fixes arrive promptly, and there are no major-version upgrades to manage. Applications are installed through Flatpak and command-line tools through Homebrew, which keeps the base system small.
 
 ## Tuned for the bench
 
-Benchtop Linux is tuned for low interactive latency and stability, and its desktop remains responsive when the system is under heavy load. It supports the following threads of technical work without additional configuration: AI, virtualization, software development, system administration, security, reverse engineering, and content creation.
+Benchtop Linux is tuned for low interactive latency and stability, so that its desktop remains responsive when the system is under heavy load.
+
+## Threads of technical work
+
+Benchtop Linux is configured for each of the following threads of technical work without additional setup.
+
+<dl class="threads">
+  <div><dt>AI</dt><dd>Local model inference and development.</dd></div>
+  <div><dt>Virtualization</dt><dd>Virtual machines and containers built on KVM and QEMU.</dd></div>
+  <div><dt>Software development</dt><dd>Editors, debuggers, and build tooling, with command-line tools available through Homebrew.</dd></div>
+  <div><dt>System administration</dt><dd>Remote access, backup, and storage tools for managing multiple machines.</dd></div>
+  <div><dt>Security</dt><dd>Network analysis, digital forensics, and password auditing.</dd></div>
+  <div><dt>Reverse engineering</dt><dd>Disassembly, decompilation, debugging, and binary inspection.</dd></div>
+  <div><dt>Content creation</dt><dd>Audio, video, graphics, and publishing applications.</dd></div>
+</dl>
 
 ## Hardware
 
-Benchtop Linux supports workstation-class x86 and ARM hardware and ships two kernels, a long-term-support kernel and a current kernel, both patched for hardware support. It is also optimized for Microsoft Surface devices, Apple MacBooks, Lenovo ThinkPads, and ASUS and Razer laptops, as well as common peripherals.
+Benchtop Linux runs on workstation-class x86 and ARM hardware. It ships two kernels, a long-term-support kernel and a current kernel, and both include patches that extend support for laptops, tablets, convertibles, and common peripherals.
 
 ## Status
 
