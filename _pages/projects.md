@@ -7,7 +7,7 @@ subtitle: "Software, patches, and builds from the lab, released openly where lic
 
 ## Technicomp Benchtop Linux
 
-The operating system for the technical workbench: a stable GNOME desktop that stays responsive under heavy load and is ready out of the box for every thread of your work, from AI and virtualization to reverse engineering and content creation. It's now in alpha.
+Technicomp Benchtop Linux is the operating system for the technical workbench: a stable GNOME desktop that remains responsive under heavy load and supports threads of technical work ranging from AI and virtualization to reverse engineering and content creation. It is currently in alpha.
 
 [About Benchtop Linux &rarr;](/benchtop/)
 
