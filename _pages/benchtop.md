@@ -26,7 +26,7 @@ The system ships tuned defaults rather than stock ones: kernel and network sysct
 
 ## Hardware
 
-The kernel is patched to support widely used hardware, including Microsoft Surface devices and Apple MacBooks, and userspace support is included for common peripherals. ARM will be a supported architecture in the future.
+Benchtop Linux is optimized for widely used hardware, including Microsoft Surface devices, Apple MacBooks, Lenovo ThinkPads, ASUS and Razer laptops, and common peripherals. ARM will be a supported architecture in the future.
 
 ## Why it exists
 
