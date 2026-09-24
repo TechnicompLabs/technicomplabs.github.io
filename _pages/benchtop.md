@@ -16,7 +16,7 @@ description: "Technicomp Benchtop Linux, the operating system for the technical 
 
 <div class="measure prose product-body" markdown="1">
 
-## The LTS distro that rolls
+## Rolling updates on an LTS foundation
 
 Benchtop Linux is immutable. Each update installs as a new snapshot, and you can roll back to the previous one if an update causes a problem. The system rolls, but its core packages, including the kernel, track LTS releases, and GNOME stays one release behind current. Security fixes arrive promptly, and there are no major-version upgrades to manage. Applications come from Flatpak and command-line tools from Homebrew, which keeps the base system small.
 
