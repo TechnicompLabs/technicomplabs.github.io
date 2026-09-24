@@ -18,7 +18,7 @@ description: "Technicomp Benchtop Linux, the operating system for the technical 
 
 ## Rolling updates on an LTS foundation
 
-Benchtop Linux is immutable. Each update installs as a new snapshot, and you can roll back to the previous one if an update causes a problem. The system rolls, but its core packages, including the kernel, track LTS releases, and the desktop runs GNOME Oldstable. Security fixes arrive promptly, and there are no major-version upgrades to manage. Applications come from Flatpak and command-line tools from Homebrew, which keeps the base system small.
+Benchtop Linux is immutable. Each update installs as a new snapshot, and you can roll back to the previous one if an update causes a problem. The system rolls, but its core packages track LTS releases, and the desktop runs GNOME Oldstable. Security fixes arrive promptly, and there are no major-version upgrades to manage. Applications come from Flatpak and command-line tools from Homebrew, which keeps the base system small.
 
 It's designed for stability. Whether it's also more secure than conventional stable distributions, which backport fixes into older package versions, is the subject of separate research.
 
@@ -28,7 +28,7 @@ Benchtop Linux is tuned for low latency and stability, so the desktop stays resp
 
 ## Hardware
 
-Benchtop Linux runs on workstation-class x86 hardware. It's also optimized for Microsoft Surface devices, Apple MacBooks, Lenovo ThinkPads, and ASUS and Razer laptops, along with common peripherals. ARM support is coming.
+Benchtop Linux runs on workstation-class x86 hardware and ships two kernels, LTS and current, both patched for hardware support. It's also optimized for Microsoft Surface devices, Apple MacBooks, Lenovo ThinkPads, and ASUS and Razer laptops, along with common peripherals. ARM support is coming.
 
 ## Status
 
