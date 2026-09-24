@@ -40,7 +40,7 @@ Benchtop Linux is configured for each of the following threads of technical work
 
 ## Hardware
 
-Benchtop Linux runs on workstation-class x86 and ARM hardware. It ships two kernels, a long-term-support kernel and a current kernel, and both include patches that extend support for laptops, tablets, convertibles, and common peripherals.
+Benchtop Linux runs on workstation-class x86 and ARM hardware. It ships two kernels, LTS and Current, and both include patches that extend support for laptops, tablets, convertibles, and common peripherals.
 
 ## Status
 
