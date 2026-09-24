@@ -22,7 +22,7 @@ Benchtop Linux keeps openSUSE Aeon's foundation (read-only btrfs snapshots, UEFI
 
 ## Tuned for the bench
 
-The system ships tuned defaults rather than stock ones: kernel and network sysctls, BFQ and Kyber I/O scheduling, transparent-huge-page and multi-generational-LRU policy, and realtime-audio limits, all layered as drop-ins that sort after openSUSE's vendor defaults and stay overridable. The goal is a desktop that stays responsive under heavy load. It comes ready for AI, virtualization, software development, system administration, security, audio, and content-creation work.
+Benchtop Linux prioritizes low interactive latency and workstation stability, so the desktop stays responsive even when the machine is busy. It comes ready for AI, virtualization, software development, system administration, security, audio, and content creation.
 
 ## Hardware
 
