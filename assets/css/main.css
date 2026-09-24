@@ -209,6 +209,13 @@ th { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spac
 .split p.kicker, .card-body p.kicker { font-size: 0.72rem; color: var(--accent); margin: 0 0 0.6rem; }
 .split p.kicker { margin-bottom: 0.9rem; }
 
+/* Threads list */
+.threads { margin: 1.5rem 0 0; border-top: 1px solid var(--rule); }
+.threads div { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--rule); }
+.threads dt { font-family: var(--display); font-weight: 700; color: var(--ink); }
+.threads dd { margin: 0; color: var(--ink-2); }
+@media (max-width: 40rem) { .threads div { grid-template-columns: 1fr; gap: 0.2rem; } }
+
 /* Product page */
 .product-header { border-bottom: 0; margin-bottom: 0; padding-bottom: 2rem; max-width: 50rem; }
 .product-header h1 { font-size: clamp(2.2rem, 4.8vw, 3.3rem); line-height: 1.06; letter-spacing: -0.025em; }
