@@ -8,7 +8,6 @@ description: "Technicomp Benchtop Linux, the operating system for the technical 
   <header class="page-header product-header">
     <p class="kicker">Technicomp Benchtop Linux &middot; Alpha</p>
     <h1>The operating system for the technical workbench.</h1>
-    <p class="lede">An immutable GNOME desktop for workstations, built on openSUSE Tumbleweed and MicroOS.</p>
   </header>
 
   {% include benchtop.html compact=true %}
