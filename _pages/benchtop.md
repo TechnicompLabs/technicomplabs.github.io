@@ -8,7 +8,7 @@ description: "Technicomp Benchtop Linux, the operating system for the technical 
   <header class="page-header product-header">
     <p class="kicker">Technicomp Benchtop Linux &middot; Alpha</p>
     <h1>The operating system for the technical workbench.</h1>
-    <p class="lede">An immutable, transactional GNOME desktop for desktop and laptop workstations, built on openSUSE Slowroll.</p>
+    <p class="lede">An immutable, transactional GNOME desktop for desktop and laptop workstations, built on openSUSE Tumbleweed and MicroOS.</p>
   </header>
 
   {% include benchtop.html compact=true %}
@@ -18,7 +18,7 @@ description: "Technicomp Benchtop Linux, the operating system for the technical 
 
 ## The LTS distro that rolls
 
-Like openSUSE MicroOS, Benchtop Linux is immutable. Each update installs as a new snapshot, and you can roll back to the previous one if an update causes a problem. The system rolls, but its core packages, including the kernel, track LTS releases, and GNOME stays one release behind current. Security fixes arrive promptly, and there are no major-version upgrades to manage. Applications come from Flatpak and command-line tools from Homebrew, which keeps the base system small.
+Benchtop Linux is immutable. Each update installs as a new snapshot, and you can roll back to the previous one if an update causes a problem. The system rolls, but its core packages, including the kernel, track LTS releases, and GNOME stays one release behind current. Security fixes arrive promptly, and there are no major-version upgrades to manage. Applications come from Flatpak and command-line tools from Homebrew, which keeps the base system small.
 
 ## Tuned for the bench
 
