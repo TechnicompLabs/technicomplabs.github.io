@@ -28,7 +28,7 @@ Benchtop Linux is tuned for low latency and stability, so the desktop stays resp
 
 ## Hardware
 
-Benchtop Linux is optimized for widely used hardware, including Microsoft Surface devices, Apple MacBooks, Lenovo ThinkPads, ASUS and Razer laptops, and common peripherals. ARM will be a supported architecture in the future.
+Benchtop Linux runs on workstation-class x86 hardware. It's also optimized for Microsoft Surface devices, Apple MacBooks, Lenovo ThinkPads, and ASUS and Razer laptops, along with common peripherals. ARM support is coming.
 
 ## Status
 
