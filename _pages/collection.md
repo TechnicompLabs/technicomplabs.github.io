@@ -2,10 +2,10 @@
 title: "Four decades of machines"
 kicker: "The Collection"
 permalink: /collection/
-subtitle: "Vintage computers and game consoles, kept in working order rather than on display."
+subtitle: "High-end vintage computers and game consoles, upgraded to the limits of their era."
 ---
 
-The collection covers personal computing and gaming hardware from the late 1970s through the 2000s. The goal is not shelf-queen preservation: machines are repaired, recapped, and kept running, and the restoration work feeds the repair write-ups on this site.
+The collection focuses on high-end computers and game consoles from the late 1970s through the 2000s. Each machine is restored and then upgraded, usually to the maximum configuration of its era with period-appropriate hardware and sometimes with modern components. The restoration and upgrade work is documented in posts on this site.
 
 A full inventory is coming. For now, the shelves.
 
