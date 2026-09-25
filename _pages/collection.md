@@ -1,5 +1,5 @@
 ---
-title: "Four decades of machines"
+title: "Every era at warp speed"
 kicker: "The Collection"
 permalink: /collection/
 subtitle: "High-end vintage computers and game consoles, upgraded to the limits of their era."
