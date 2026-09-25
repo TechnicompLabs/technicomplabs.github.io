@@ -17,7 +17,7 @@ description: "Technicomp Benchtop Linux, the operating system for the technical 
 
 ## Rolling updates on an LTS foundation
 
-Even though the system uses a rolling release model, it has LTS core packages and a GNOME Oldstable desktop. Security and bug fixes arrive promptly, with no major-version upgrades. Every update is a snapshot that can be rolled back.
+Even though the system uses a rolling release model, it has LTS core packages and a GNOME old-stable desktop. Security and bug fixes arrive promptly, with no major-version upgrades. Every update is a snapshot that can be rolled back.
 
 Flatpak provides applications and Homebrew provides command-line tools. Both are managed per user.
 
