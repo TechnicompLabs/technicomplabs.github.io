@@ -6,8 +6,8 @@ permalink: /
 <div class="wrap">
 
   <section class="hero">
-    <p class="kicker">Every era at warp speed</p>
-    <h1>Flagship machines, <span class="accent">past and present.</span></h1>
+    <p class="kicker">A working lab</p>
+    <h1>The pinnacle of computing <span class="accent">from every decade.</span></h1>
     <p class="lede">Performance engineering, applied machine learning, and high-end vintage systems upgraded to the limits of their era, from the workshop of <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a></p>
   </section>
 
@@ -51,7 +51,7 @@ permalink: /
         <img src="/assets/images/collection-compact-macs.jpg" alt="Shelves of compact Macintosh computers">
         <div class="card-body">
           <p class="kicker">The Collection</p>
-          <h3>Four decades of machines</h3>
+          <h3>Every era at warp speed</h3>
           <p>High-end vintage computers and game consoles, upgraded to the limits of their era.</p>
         </div>
       </a>
