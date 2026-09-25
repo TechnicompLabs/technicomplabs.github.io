@@ -8,7 +8,7 @@ permalink: /
   <section class="hero">
     <p class="kicker">A working lab</p>
     <h1>The pinnacle of computing <span class="accent">from every decade.</span></h1>
-    <p class="lede">Performance engineering, applied machine learning, and high-end vintage systems upgraded to the limits of their era, from the workshop of <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a></p>
+    <p class="lede">Home of Technicomp Benchtop Linux, performance research on current hardware, and high-end vintage systems upgraded to the limits of their era. From the workshop of <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a></p>
   </section>
 
   <section class="section">
@@ -27,7 +27,7 @@ permalink: /
       <div>
         <p class="kicker">LLM Performance Engineering Notebook</p>
         <h3>Finding the real speed limit of local inference.</h3>
-        <p>An open lab notebook on large Mixture-of-Experts models: measure the hard physical limit first, predict from a model, then change one variable at a time. It includes a llama.cpp scheduler patch that raised prefill throughput 13.7%, per-model results, raw logs, and the hypotheses that didn't survive measurement.</p>
+        <p>An open lab notebook on large Mixture-of-Experts models. The method is to measure the hardware limit first, predict performance from a model, and then change one variable at a time. The notebook includes a llama.cpp scheduler patch that raised prefill throughput 13.7%, per-model results, raw logs, and the hypotheses that testing did not support.</p>
         <p><a class="more" href="https://github.com/pauldmartinphd/llm-performance-engineering-notebook">Read the notebook &rarr;</a></p>
       </div>
       <img src="/assets/images/galactus-build.jpg" alt="Galactus, the lab's inference server: four GPUs and an EPYC processor in a compact chassis">
@@ -44,7 +44,7 @@ permalink: /
         <div class="card-body">
           <p class="kicker">The Lab</p>
           <h3>Bench, rack, and instruments</h3>
-          <p>The repair bench, test equipment, and machines behind the performance work and hardware restoration.</p>
+          <p>The bench, test equipment, and servers behind the performance research, restorations, and upgrades.</p>
         </div>
       </a>
       <a class="card" href="/collection/">

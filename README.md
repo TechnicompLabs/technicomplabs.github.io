@@ -1,6 +1,6 @@
 # Technicomp Labs
 
-Source for [technicomplabs.io](https://technicomplabs.io), a Jekyll site with its own small theme (no remote theme, no JavaScript). Light mode is graph paper, dark mode is a chalkboard; the layout is in `_layouts/`, the stylesheet in `assets/css/main.css`.
+Source for [technicomplabs.io](https://technicomplabs.io), a Jekyll site with its own small theme (no remote theme, no JavaScript). The design draws on Epcot Center as it opened in 1982: a spectrum stripe, roundel section markers, and a navy panel with a faint geodesic pattern. Dark mode follows the visitor's system setting. The layout is in `_layouts/` and the stylesheet in `assets/css/main.css`.
 
 ## Run locally
 
