@@ -36,12 +36,12 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #1a1f1c;
-    --surface: #212724;
+    --paper: #161b24;
+    --surface: #1d2330;
     --ink: #ebe7de;
     --ink-2: #c3beb4;
-    --ink-3: #8f978f;
-    --rule: #333b36;
+    --ink-3: #8e97a6;
+    --rule: #2e3645;
     --accent: #7db6e8;
     --accent-ink: #a6cdf0;
     --accent-soft: rgba(125, 182, 232, 0.1);
