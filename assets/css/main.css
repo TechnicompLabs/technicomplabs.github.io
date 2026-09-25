@@ -174,7 +174,7 @@ th { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spac
 }
 .board a { color: var(--chalk); text-decoration-color: rgba(236, 232, 223, 0.35); }
 .board a:hover { color: #fff; text-decoration-color: currentColor; }
-.board-kicker { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin: 0 0 1rem; }
+.board .board-kicker { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin: 0 0 1rem; }
 .board-title { font-family: var(--display); font-weight: 800; font-size: clamp(1.8rem, 3.6vw, 2.5rem); line-height: 1.08; letter-spacing: -0.02em; color: var(--chalk); margin: 0 0 1.1rem; }
 .board-text p { color: var(--chalk-2); }
 .board-lead { font-family: var(--display); font-weight: 700; font-size: 1.25rem; color: var(--chalk) !important; margin-bottom: 0.9rem; }
