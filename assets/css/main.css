@@ -1,6 +1,7 @@
 /* Technicomp Labs
    Type: NanumSquareRound (matches the logo) for display, Source Serif 4 for reading,
-   IBM Plex Mono for labels. One accent: the logo blue. Chalkboard for the featured project. */
+   IBM Plex Mono for labels. Logo blue for links, burnt orange for small labels.
+   Retro-future touches (1982 Epcot Center): spectrum stripe, roundel markers, geodesic navy panel. */
 
 @font-face { font-family: "NanumSquareRound"; font-weight: 400; font-display: swap; src: url("../fonts/nanumsquareround-R-latin.woff2") format("woff2"); }
 @font-face { font-family: "NanumSquareRound"; font-weight: 700; font-display: swap; src: url("../fonts/nanumsquareround-B-latin.woff2") format("woff2"); }
@@ -16,10 +17,12 @@
   --accent: #005699;
   --accent-ink: #00457c;
   --accent-soft: rgba(0, 86, 153, 0.08);
-  --board: #23302b;
-  --board-2: #2c3b35;
+  --board: #172239;
+  --board-2: #1f2c47;
+  --warm: #b85f26;
+  --gold: #e3b04b;
   --chalk: #ece8df;
-  --chalk-2: #aeb7b1;
+  --chalk-2: #b3bccb;
   --chalk-accent: #8ec3ee;
   --board-rule: rgba(236, 232, 223, 0.14);
 
@@ -42,8 +45,9 @@
     --accent: #7db6e8;
     --accent-ink: #a6cdf0;
     --accent-soft: rgba(125, 182, 232, 0.1);
-    --board: #243129;
-    --board-2: #2b3a32;
+    --board: #141e33;
+    --board-2: #1b2842;
+    --warm: #e08a4f;
   }
 }
 
@@ -94,6 +98,11 @@ a:hover { color: var(--accent-ink); text-decoration-color: currentColor; }
 
 .site-main { padding: 2rem 0 5rem; }
 
+/* Spectrum stripe (after the 1982 Epcot Center mark) */
+.spectrum { height: 5px; background: linear-gradient(90deg,
+  #d4402e 0 16.66%, #e9812f 16.66% 33.33%, #eebd35 33.33% 50%,
+  #4f9a49 50% 66.66%, #2478bb 66.66% 83.33%, #6a4c9c 83.33% 100%); }
+
 /* ---------- Type ---------- */
 h1, h2, h3, h4 { font-family: var(--display); color: var(--ink); line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 0.75rem; }
 h1 { font-weight: 800; font-size: 2.55rem; letter-spacing: -0.02em; }
@@ -104,7 +113,7 @@ strong { font-weight: 600; }
 
 .kicker {
   font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--accent); margin: 0 0 0.9rem;
+  color: var(--warm); margin: 0 0 0.9rem;
 }
 .lede { font-size: 1.22rem; line-height: 1.55; color: var(--ink-2); margin: 0.9rem 0 0; }
 .accent { color: var(--accent); }
@@ -146,8 +155,8 @@ th { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spac
 .hero .lede { font-size: 1.3rem; max-width: 38rem; margin-top: 1.5rem; }
 
 .section { padding: 3.5rem 0 0; }
-.section-head { display: flex; align-items: baseline; gap: 0.9rem; margin: 0 0 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
-.section-head .num { font-family: var(--mono); font-size: 0.85rem; font-weight: 500; color: var(--accent); }
+.section-head { display: flex; align-items: center; gap: 0.9rem; margin: 0 0 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
+.section-head .num { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 2.1rem; height: 2.1rem; border-radius: 50%; background: var(--accent); color: var(--paper); font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.02em; }
 .section-head h2 { margin: 0; font-size: 1.5rem; font-weight: 800; }
 .section-head .more { margin-left: auto; }
 
@@ -155,8 +164,8 @@ th { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spac
 .board {
   display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 3rem;
   background:
-    radial-gradient(ellipse 60% 80% at 15% 0%, rgba(255, 255, 255, 0.05), transparent 70%),
-    radial-gradient(ellipse 50% 60% at 90% 100%, rgba(255, 255, 255, 0.03), transparent 70%),
+    radial-gradient(ellipse 70% 90% at 12% 0%, rgba(120, 160, 230, 0.10), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='69.28'%3E%3Cpath d='M0 0H40M0 34.64H40M0 0L40 69.28M40 0L0 69.28' stroke='%23ffffff' stroke-opacity='0.055' stroke-width='1' fill='none'/%3E%3C/svg%3E") top right / 40px 69.28px,
     var(--board);
   color: var(--chalk);
   border-radius: 8px;
@@ -165,7 +174,7 @@ th { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spac
 }
 .board a { color: var(--chalk); text-decoration-color: rgba(236, 232, 223, 0.35); }
 .board a:hover { color: #fff; text-decoration-color: currentColor; }
-.board-kicker { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--chalk-accent); margin: 0 0 1rem; }
+.board-kicker { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin: 0 0 1rem; }
 .board-title { font-family: var(--display); font-weight: 800; font-size: clamp(1.8rem, 3.6vw, 2.5rem); line-height: 1.08; letter-spacing: -0.02em; color: var(--chalk); margin: 0 0 1.1rem; }
 .board-text p { color: var(--chalk-2); }
 .board-lead { font-family: var(--display); font-weight: 700; font-size: 1.25rem; color: var(--chalk) !important; margin-bottom: 0.9rem; }
@@ -206,7 +215,7 @@ th { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spac
 .empty { font-style: italic; color: var(--ink-3); }
 
 /* Kickers keep their styling inside components */
-.split p.kicker, .card-body p.kicker { font-size: 0.72rem; color: var(--accent); margin: 0 0 0.6rem; }
+.split p.kicker, .card-body p.kicker { font-size: 0.72rem; color: var(--warm); margin: 0 0 0.6rem; }
 .split p.kicker { margin-bottom: 0.9rem; }
 
 /* Threads list */
