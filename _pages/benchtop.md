@@ -25,11 +25,11 @@ Fixed-release distributions trade currency for predictability: the whole system 
 
 Most of the software stack follows openSUSE Tumbleweed and stays current. Compilers, language runtimes, system libraries, firmware, graphics components, and development tools are more useful new than old, and Benchtop Linux does not try to freeze them. The components with a demonstrated tendency to cause disruptive workstation regressions are handled more conservatively. The kernel is an LTS kernel by default, with a newer kernel provided where hardware enablement requires it. The desktop follows the previous upstream-supported GNOME release, and does not move to each new major version as soon as it ships. That release still receives upstream bug and security fixes, and Benchtop Linux moves to the next major version when upstream ends support for the current one, by which time the new release has been through its initial round of fixes.
 
-The short form of the policy is conservative where regressions are expensive, current where staleness is expensive. The informal version, for the desktop in particular, is to let other people be the beta testers.
+For the desktop in particular, the informal version of this policy is to let other people be the beta testers.
 
 ## An immutable, complete system
 
-Benchtop Linux is built on the immutable, transactional model of openSUSE MicroOS. Updates are applied to a new snapshot rather than to the running system, and the machine boots into that snapshot once the update is complete. If an update causes a problem, the previous snapshot is still available to roll back to.
+Benchtop Linux is built on the immutable, transactional model of openSUSE MicroOS. Updates are applied to a new snapshot rather than to the running system, and the machine switches to that snapshot at the next boot. If an update causes a problem, the previous snapshot is still available to roll back to.
 
 The system package set is treated as a finished product, not a construction kit, and users are not expected to modify it. The image contains the operating system, the desktop platform, drivers, firmware, privileged services, hardware integration, development toolchains, and the other system-level plumbing that its intended workflows need. Because users do not add system packages, the image has to be complete. Benchtop Linux does not minimize the installation image by leaving out useful infrastructure that every user would then install again. If a workflow is part of the intended workstation experience and requires system-level support, that support is already present and configured.
 
@@ -39,7 +39,7 @@ The working rule is simple: do not modify the operating system; extend your acco
 
 Graphical applications are installed as Flatpaks in the user's profile. Because applications are decoupled from the operating system's lifecycle, they stay current even while the desktop platform advances more cautiously. Additional command-line software, and alternate or pinned versions of toolchains, are installed through Homebrew, also per user. Linux environments that genuinely need their own mutable package sets belong in containers or virtual machines, where they cannot alter the host.
 
-Customization is still extensive. Users can customize extensively through Flatpak, Homebrew, language ecosystems, containers, virtual machines, their home directories, and ordinary user configuration. The boundary is around the base operating system, which stays consistent, recoverable, and identical to what was tested. A user who prefers a minimal base installation and wants to assemble every part of the workstation by hand will probably be better served by a different distribution, and that is a reasonable preference.
+Users can still customize extensively through Flatpak, Homebrew, language ecosystems, containers, virtual machines, their home directories, and ordinary user configuration. The one firm boundary is the base operating system, which stays consistent, recoverable, and identical to what was tested. A user who prefers a minimal base installation and wants to assemble every part of the workstation by hand will probably be better served by a different distribution, and that is a reasonable preference.
 
 ## Development environments
 
