@@ -1,10 +1,14 @@
 <section class="board">
   <div class="board-text">
-    {% unless include.compact %}<p class="board-kicker">Technicomp Benchtop Linux &middot; Alpha</p>
-    <h2 class="board-title">The operating system for the technical workbench.</h2>{% endunless %}
-    <p class="board-lead">Conservative where regressions are expensive. Current where staleness is expensive.</p>
-    {% unless include.compact %}<p>Benchtop Linux is a stabilized workstation rolling release derived from openSUSE Tumbleweed and MicroOS. Most of the system follows Tumbleweed, so compilers, language runtimes, libraries, firmware, and graphics stay current. The kernel and the desktop, the components most likely to disrupt a working machine when they change, move more carefully: an LTS kernel by default, and the previous upstream-supported GNOME release.</p>
-    <p>The operating system is an immutable image that arrives complete, and every update is a snapshot that can be rolled back. Users extend their own accounts, with Flatpak for applications and Homebrew for additional command-line tools, rather than modifying the system.</p>{% endunless %}
+    {%- if include.compact %}
+    <p><strong>Benchtop Linux is a complete Linux workstation built on openSUSE Tumbleweed and MicroOS.</strong> It keeps the development stack and underlying system current while taking a more conservative approach to the kernel and desktop, where major updates are more likely to disrupt a working machine.</p>
+    <p>The system is delivered as an immutable, transactional image with the tools, hardware support, and system integration expected on a technical workstation already in place. Applications and additional tools live in the user's profile rather than altering the operating system.</p>
+    {%- else %}
+    <p class="board-kicker">Technicomp Benchtop Linux &middot; Alpha</p>
+    <h2 class="board-title">The operating system for the technical workbench.</h2>
+    <p>Benchtop Linux is a stabilized workstation rolling release built on openSUSE Tumbleweed and MicroOS. Most of the system stays current with Tumbleweed, while the kernel and desktop move more cautiously to reduce disruptive workstation regressions.</p>
+    <p>The operating system is a complete, immutable image. Applications and additional tools live in the user's profile through Flatpak and Homebrew rather than being layered into the system.</p>
+    {%- endif %}
     <p class="board-links">
       {% unless include.compact %}<a href="{{ '/benchtop/' | relative_url }}">About Benchtop Linux &rarr;</a>{% endunless %}
       {% if site.benchtop_site.live %}<a href="{{ site.benchtop_site.url }}">benchtoplinux.org &rarr;</a>{% endif %}
@@ -16,12 +20,12 @@
   <dl class="board-specs">
     <div><dt>Release</dt><dd>Stabilized workstation rolling release</dd></div>
     <div><dt>Base</dt><dd>openSUSE Tumbleweed and MicroOS</dd></div>
-    <div><dt>Kernel</dt><dd>LTS by default; current kernel where hardware requires it</dd></div>
-    <div><dt>Desktop</dt><dd>Blueprint Environment, on the previous supported GNOME release</dd></div>
+    <div><dt>Kernel</dt><dd>LTS by default &middot; Current for hardware enablement</dd></div>
+    <div><dt>Desktop</dt><dd>Blueprint Environment &middot; previous supported GNOME release</dd></div>
     <div><dt>System</dt><dd>Immutable image, transactional updates, snapshots</dd></div>
     <div><dt>Apps</dt><dd>Flatpak and Homebrew, per user</dd></div>
     <div><dt>Development</dt><dd>Major language toolchains included</dd></div>
-    <div><dt>Latency</dt><dd>Interactive and real-time responsiveness first</dd></div>
+    <div><dt>Latency</dt><dd>Low interactive latency &middot; real-time audio ready</dd></div>
     <div><dt>Hardware</dt><dd>x86 and ARM</dd></div>
     <div><dt>Status</dt><dd>Alpha images on OBS</dd></div>
   </dl>
