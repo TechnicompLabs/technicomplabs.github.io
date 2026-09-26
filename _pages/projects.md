@@ -7,7 +7,7 @@ subtitle: "Software, patches, and builds from the lab, released openly where lic
 
 ## Technicomp Benchtop Linux
 
-The operating system for the technical workbench: an immutable GNOME desktop with an LTS core, tuned for low interactive latency. It is currently in alpha.
+Technicomp Benchtop Linux is a stabilized workstation rolling release derived from openSUSE Tumbleweed and MicroOS. The kernel and the desktop, the components most likely to cause disruptive regressions, move conservatively, while the rest of the system stays current. The operating system is an immutable, complete image that users extend through their own accounts rather than modify. It is currently in alpha.
 
 [About Benchtop Linux &rarr;](/benchtop/)
 

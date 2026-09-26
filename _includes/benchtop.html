@@ -2,9 +2,9 @@
   <div class="board-text">
     {% unless include.compact %}<p class="board-kicker">Technicomp Benchtop Linux &middot; Alpha</p>
     <h2 class="board-title">The operating system for the technical workbench.</h2>{% endunless %}
-    <p class="board-lead">Updates that don't break your bench.</p>
-    <p>An immutable workstation operating system with LTS core packages and a GNOME old stable desktop, so the system stays stable while security and bug fixes arrive promptly. Every update is a snapshot that can be rolled back.</p>
-    <p class="board-motto">&ldquo;Let other people be your beta testers.&rdquo;</p>
+    <p class="board-lead">Conservative where regressions are expensive. Current where staleness is expensive.</p>
+    <p>Benchtop Linux is a stabilized workstation rolling release derived from openSUSE Tumbleweed and MicroOS. Most of the system follows Tumbleweed, so compilers, language runtimes, libraries, firmware, and graphics stay current. The kernel and the desktop, the components most likely to disrupt a working machine when they change, move more carefully: an LTS kernel by default, and the previous upstream-supported GNOME release.</p>
+    <p>The operating system is an immutable image that arrives complete, and every update is a snapshot that can be rolled back. Users extend their own accounts, with Flatpak for applications and Homebrew for additional command-line tools, rather than modifying the system.</p>
     <p class="board-links">
       <a href="https://github.com/TechnicompLabs">Source &rarr;</a>
       <a href="https://build.opensuse.org/project/show/home:technicomp">Build Service &rarr;</a>
@@ -12,11 +12,14 @@
     </p>
   </div>
   <dl class="board-specs">
-    <div><dt>Base</dt><dd>openSUSE Tumbleweed / MicroOS</dd></div>
-    <div><dt>Kernel</dt><dd>LTS and Current</dd></div>
-    <div><dt>Desktop</dt><dd>GNOME old stable</dd></div>
-    <div><dt>System</dt><dd>Immutable with btrfs snapshots</dd></div>
+    <div><dt>Release</dt><dd>Stabilized workstation rolling release</dd></div>
+    <div><dt>Base</dt><dd>openSUSE Tumbleweed and MicroOS</dd></div>
+    <div><dt>Kernel</dt><dd>LTS by default; current kernel where hardware requires it</dd></div>
+    <div><dt>Desktop</dt><dd>Blueprint Environment, on the previous supported GNOME release</dd></div>
+    <div><dt>System</dt><dd>Immutable image, transactional updates, snapshots</dd></div>
     <div><dt>Apps</dt><dd>Flatpak and Homebrew, per user</dd></div>
+    <div><dt>Development</dt><dd>Major language toolchains included</dd></div>
+    <div><dt>Latency</dt><dd>Interactive and real-time responsiveness first</dd></div>
     <div><dt>Hardware</dt><dd>x86 and ARM</dd></div>
     <div><dt>Status</dt><dd>Alpha images on OBS</dd></div>
   </dl>

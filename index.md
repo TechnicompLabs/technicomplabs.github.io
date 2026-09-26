@@ -7,8 +7,8 @@ permalink: /
 
   <section class="hero">
     <p class="kicker">A working lab</p>
-    <h1>The pinnacle of computing <span class="accent">from every decade.</span></h1>
-    <p class="lede">Home of Technicomp Benchtop Linux, performance research on current hardware, and high-end vintage systems upgraded to the limits of their era. From the workshop of <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a></p>
+    <h1>Building, measuring, and restoring <span class="accent">computing systems.</span></h1>
+    <p class="lede">Technicomp Labs is the independent workshop of <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a> It develops Technicomp Benchtop Linux, publishes performance research measured on its own hardware, and restores and upgrades high-end computers from every decade.</p>
   </section>
 
   <section class="section">
@@ -27,7 +27,7 @@ permalink: /
       <div>
         <p class="kicker">LLM Performance Engineering Notebook</p>
         <h3>Finding the real speed limit of local inference.</h3>
-        <p>An open lab notebook on large Mixture-of-Experts models. The method is to measure the hardware limit first, predict performance from a model, and then change one variable at a time. The notebook includes a llama.cpp scheduler patch that raised prefill throughput 13.7%, per-model results, raw logs, and the hypotheses that testing did not support.</p>
+        <p>An open lab notebook on the inference speed of large Mixture-of-Experts models. Each investigation starts by measuring the hardware limit, predicts performance from a model of that limit, and then changes one variable at a time. The notebook includes a llama.cpp scheduler patch that raised prefill throughput 13.7%, per-model results, raw logs, and the hypotheses that testing did not support.</p>
         <p><a class="more" href="https://github.com/pauldmartinphd/llm-performance-engineering-notebook">Read the notebook &rarr;</a></p>
       </div>
       <img src="/assets/images/galactus-build.jpg" alt="Galactus, the lab's inference server: four GPUs and an EPYC processor in a compact chassis">
@@ -52,7 +52,7 @@ permalink: /
         <div class="card-body">
           <p class="kicker">The Collection</p>
           <h3>Every era at warp speed</h3>
-          <p>High-end vintage computers and game consoles, upgraded to the limits of their era.</p>
+          <p>The pinnacle of computing from every decade, restored and upgraded to the limits of its era.</p>
         </div>
       </a>
     </div>
