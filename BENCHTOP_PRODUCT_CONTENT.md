@@ -178,6 +178,22 @@ The working rule: **do not modify the operating system; extend your account.**
 
 **Not yet established:** the full list of supported hardware families, tested models, and known issues.
 
+### 8.1 Documented hardware baseline
+
+**Established** (set September 2026; this is the support target)
+
+| Component | Baseline |
+|---|---|
+| CPU | x86-64-v3, 4 cores / 8 threads or better |
+| Memory | 16 GB minimum; 32 GB or more recommended |
+| Storage | 1 TB SSD minimum |
+| Display | 1920×1080 minimum |
+| Graphics | Hardware acceleration suitable for the supported GNOME/Wayland stack |
+
+**Rationale:** The baseline gives the project a clear support target. Benchtop Linux is a workstation operating system, and it is not intended for very old or undersized hardware.
+
+**Not yet established:** the equivalent baseline for ARM systems (ARM images are not yet published), and whether the image itself will require x86-64-v3 or will only be supported on it.
+
 ---
 
 ## 9. Development environments
