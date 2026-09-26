@@ -194,7 +194,25 @@ The working rule: **do not modify the operating system; extend your account.**
 
 **Established:** x86-64-v3 is the officially supported level, not a hard requirement. The image follows Tumbleweed's x86-64 baseline and will boot on older CPUs, but systems below the documented baseline are unsupported. Problems reported on them are out of scope.
 
-**Not yet established:** the equivalent baseline for ARM systems (ARM images are coming but not yet published).
+### 8.2 ARM hardware baseline
+
+**Established** (set September 2026; ARM images are coming but not yet published)
+
+| Component | Baseline |
+|---|---|
+| CPU | 64-bit ARMv8.2-A or later; 4 cores minimum, 8 or more recommended |
+| Firmware | UEFI boot, ideally Arm SystemReady-certified |
+| Kernel and graphics | Supported by the upstream Linux kernel and Mesa, with no vendor board-support package required |
+| Memory | 16 GB minimum; 32 GB or more recommended |
+| Storage | 1 TB SSD minimum |
+| Display | 1920×1080 minimum |
+
+**Rationale:** ARMv8.2-A plays roughly the role that x86-64-v3 plays on x86. Most ARM cores lack SMT, so the core count is stated without threads. UEFI boot keeps ARM to one image rather than per-device boot arrangements, which fits the single tested system image. Requiring upstream kernel and Mesa support is the ARM counterpart of the graphics requirement, because many ARM GPUs work only with vendor drivers.
+
+**Not yet established:**
+
+- Whether Apple Silicon Macs are in scope. Linux on them depends on the Asahi kernel rather than the upstream kernel, so the recommendation is to leave them out.
+- Whether some ARM platforms, where upstream support is still moving quickly, should default to the current kernel instead of LTS.
 
 ---
 
