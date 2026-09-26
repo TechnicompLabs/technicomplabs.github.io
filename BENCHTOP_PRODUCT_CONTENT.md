@@ -23,13 +23,13 @@ Conventions used below:
 - Kernel policy: **LTS by default; a current kernel for hardware enablement.**
 - Never write "LTS core packages." Only the kernel follows an LTS branch; most of the system follows Tumbleweed.
 - Tagline: "The operating system for the technical workbench."
+- Retired: "Conservative where regressions are expensive. Current where staleness is expensive." The idea is correct, but the phrasing is not part of the product voice; explain the release model in ordinary sentences, and don't replace it with another symmetrical slogan.
 - Retired: "Updates that don't break your bench." Slowroll was an earlier base and is no longer used; don't mention it.
 
 **Words to avoid in product copy:** purpose-built, deliberately, seamlessly, powerful, modern, cohesive, designed to. Avoid stacked slogans, sentence fragments, and repeated "not X but Y" constructions.
 
 **Principles** (use sparingly, one or two per page at most):
 
-- "Conservative where regressions are expensive. Current where staleness is expensive."
 - "Do not modify the operating system. Extend your account."
 - "The operating system is a finished product, not a construction kit."
 - Informal, for the desktop in particular: "Let other people be the beta testers." It works as an aside after the policy has been explained. It should not be a headline.

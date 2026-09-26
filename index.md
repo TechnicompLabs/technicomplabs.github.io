@@ -8,7 +8,7 @@ permalink: /
   <section class="hero">
     <p class="kicker">A working lab</p>
     <h1>Building, measuring, and restoring <span class="accent">computing systems.</span></h1>
-    <p class="lede">Technicomp Labs is an independent computing laboratory run by <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a> It builds, measures, modifies, and restores computers, usually to find out how well a machine can be made to work and then to make it work that well. Current projects include an operating system for technical workstations, performance research on the lab's own hardware, and a collection of high-end computers from every decade.</p>
+    <p class="lede">Technicomp Labs is the independent computing laboratory of <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a> The lab builds and modifies current systems, measures their limits, and restores computers and game consoles from earlier eras. Current work includes Benchtop Linux, performance research on local AI systems, hardware and firmware projects, and a working collection spanning five decades of personal computing.</p>
   </section>
 
   <section class="section">

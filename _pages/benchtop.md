@@ -17,31 +17,53 @@ description: "Technicomp Benchtop Linux is a stabilized workstation rolling rele
 
 ## What Benchtop Linux is
 
-Technicomp Benchtop Linux is a workstation operating system for professionals and technically sophisticated users who want to use the machine rather than spend their time maintaining it. It is opinionated about the operating system and flexible about everything the user builds above it. It is intended for software development, local AI work, virtualization, system administration, security work, reverse engineering, and audio and video production.
+Technicomp Benchtop Linux is a stabilized workstation rolling release derived from openSUSE Tumbleweed and MicroOS. It is built for professionals and technically sophisticated users who want a Linux workstation that arrives ready for technical work and remains predictable over time without giving up a current development environment.
 
-## A stabilized workstation rolling release
+Benchtop is opinionated about the operating system and flexible above it. The system image owns the desktop, hardware integration, development toolchains, privileged services, and other machine-level plumbing. Applications, additional tools, project environments, and user configuration live outside that boundary.
 
-The parts of an operating system do not all fail in the same way. A regression in the kernel or the desktop can take a working machine out of service for a day, while a compiler or library that is two years old quietly costs time on every project. Benchtop Linux is a stabilized workstation rolling release, and it handles those two risks separately.
+## Stable where breakage is expensive
 
-Most of the system follows openSUSE Tumbleweed, so compilers, language runtimes, libraries, firmware, and graphics stay current. The kernel and the desktop, the components with a history of disruptive workstation regressions, move more conservatively. The kernel follows an LTS branch by default, with a current kernel available where hardware needs it. The desktop follows the previous upstream-supported GNOME release, which still receives upstream bug and security fixes. Benchtop Linux moves to the next major version when upstream support for the current one ends, by which time the new release has had its first round of fixes. For the desktop in particular, the informal version of this policy is to let other people be the beta testers.
+Not every part of an operating system benefits from the same update policy. Benchtop follows Tumbleweed for most of the software stack, keeping compilers, language runtimes, system libraries, firmware, graphics components, and development tools current.
+
+The kernel and desktop move more cautiously because regressions there are disproportionately disruptive to a working machine. Benchtop uses an LTS kernel by default, with a current kernel available when newer hardware requires it. The Blueprint Environment follows the previous upstream-supported GNOME release, continuing to receive upstream fixes while avoiding the earliest part of each major desktop transition.
+
+Benchtop therefore does not try to make every component equally conservative. It keeps the parts that benefit from currency moving with Tumbleweed while giving the kernel and desktop a longer stabilization window.
+
+> For the desktop in particular, the informal version is to let other people be the beta testers.
 
 ## An immutable system, extended per user
 
-The operating system uses the immutable, transactional model of openSUSE MicroOS. Each update is written to a new snapshot that the machine switches to at the next boot, and the previous snapshot remains available if something goes wrong.
+Benchtop uses the immutable, transactional model provided by MicroOS. System updates are applied as new snapshots rather than as a sequence of changes to the running root filesystem, and an earlier snapshot remains available for rollback.
 
-The system package set is maintained as one tested image, and individual users do not modify it. Customization happens above that boundary. Applications are installed per user as Flatpaks, additional command-line tools and pinned toolchains come from Homebrew, project dependencies come from each language's own package manager, and anything that needs its own mutable system runs in a container or virtual machine. The base stays consistent and recoverable, and the user's own environment remains theirs to arrange.
+The system package set is not intended to be customized by the user. Graphical applications are installed as per-user Flatpaks. Homebrew provides additional command-line software and alternate or pinned toolchains in the user's profile. Project dependencies are managed by their native language ecosystems, and workloads that need an independently mutable Linux userspace belong in containers or virtual machines.
+
+The operating system stays consistent while the user's environment remains flexible.
 
 ## A complete system
 
-Because users do not add system packages, the image has to be complete. If a supported workflow needs system-level plumbing, that plumbing ships with Benchtop Linux and is already configured. Users should not have to add repositories, patch kernels, install privileged daemons, write udev rules, or edit PAM configuration to make supported hardware or software work. Current hardware examples include ASUS hardware through asusctl, RGB control through OpenRGB, Microsoft Surface devices, and Apple computers with the T2 chip. The major programming-language toolchains are included as well, at current Tumbleweed versions.
+An immutable workstation only works well if the image already contains the system-level pieces its users need. Benchtop therefore ships the plumbing for its intended workflows rather than expecting every user to reconstruct it afterward.
 
-## Latency and professional audio
+If support requires a kernel patch, firmware, a system service, device permissions, a udev rule, or similar privileged integration, it belongs in the system image. Current examples include ASUS laptop support through asusctl, OpenRGB integration, Microsoft Surface hardware, and T2-based Macs.
 
-Linux is commonly tuned for aggregate throughput. That suits servers and batch jobs, but it can leave a desktop sluggish when background work competes with the person at the keyboard. Benchtop Linux treats a workstation as a workstation: when the two goals conflict, low and predictable interactive latency takes priority over the last increment of throughput. Low-latency and real-time audio are intended workloads, and the scheduling, permissions, and PipeWire configuration they need are part of the system from the start.
+The same principle applies to development. Benchtop includes the major programming-language toolchains at the versions supplied by Tumbleweed. The distro provides the compiler or interpreter, standard library, and normal development tooling; third-party project libraries remain with Cargo, npm, pip, RubyGems, and the other native language ecosystems rather than becoming part of the system package set.
 
 ## The Blueprint Environment
 
-The desktop is the Blueprint Environment, an integrated desktop built on GNOME. It covers the desktop's interaction model, defaults, visual consistency, extensions, and conventions, and how they fit with the rest of the system. The Blueprint Shell is the part specific to GNOME Shell: its extensions, configuration, and behavior. Blueprint is not a fork of GNOME. It is maintained as part of the product so that the workstation behaves like one designed system, and it is another reason the desktop follows the previous supported GNOME release: a maintained desktop should not change unpredictably every six months.
+Benchtop's desktop is the Blueprint Environment, a GNOME-based desktop whose behavior and presentation are maintained as part of the operating system.
+
+Blueprint uses a selected set of extensions, defaults, and configuration to provide a consistent way of working across Benchtop systems and releases. The goal is not to make GNOME different for its own sake. It is to make the desktop predictable: the same controls should be in the same places, common actions should behave the same way, and routine upgrades should not repeatedly change the workstation underneath the user.
+
+The Blueprint Shell is the GNOME Shell-specific part of that environment: its extensions, configuration, and behavior. Blueprint is not a fork of GNOME; it is an integrated configuration of GNOME maintained as part of Benchtop.
+
+## Responsive under load
+
+Benchtop is tuned for a person sitting in front of the computer.
+
+Linux systems are often optimized for aggregate throughput. That is a sensible priority for servers and batch workloads, but it can be the wrong tradeoff for an interactive desktop. A machine can finish background work somewhat faster while becoming noticeably sluggish when CPU, memory, or storage activity competes with the person using it.
+
+Benchtop gives priority to low and predictable interactive latency when that conflicts with extracting the last increment of throughput. Scheduling, memory management, storage behavior, power management, and related system policy are chosen with desktop responsiveness in mind.
+
+The same approach extends to professional audio. Low-latency and real-time audio are intended workstation workloads, with the necessary scheduling policy, resource limits, permissions, and PipeWire integration configured at the system level.
 
 {% include benchtop-handoff.html %}
 
