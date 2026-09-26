@@ -1,11 +1,17 @@
 title: "Technicomp Labs"
 tagline: "Building, measuring, and restoring computing systems"
-description: "The independent workshop of Paul D. Martin, Ph.D.: home of Technicomp Benchtop Linux, performance research on current hardware, and a collection of high-end computers from every decade."
+description: "An independent computing laboratory run by Paul D. Martin, Ph.D. Its projects include Technicomp Benchtop Linux, performance research on current hardware, and a collection of high-end computers from every decade."
 url: "https://technicomplabs.io"
 baseurl: ""
 author: "Paul D. Martin, Ph.D."
 logo: /assets/images/logo.png
 timezone: America/New_York
+
+# The dedicated Benchtop Linux site. Set live to true when it is ready for
+# visitors; the Benchtop panel and page then link to it.
+benchtop_site:
+  url: "https://benchtoplinux.org"
+  live: false
 
 markdown: kramdown
 highlighter: rouge
@@ -22,6 +28,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - BENCHTOP_PRODUCT_CONTENT.md
   - vendor
 
 plugins:

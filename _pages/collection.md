@@ -5,7 +5,7 @@ permalink: /collection/
 subtitle: "The pinnacle of computing from every decade, restored and upgraded to the limits of its era."
 ---
 
-The collection focuses on high-end computers and game consoles from the late 1970s through the 2000s. Each machine is restored and then upgraded, usually to the maximum configuration of its era with period-appropriate hardware and sometimes with modern components. The restoration and upgrade work is documented in posts on this site.
+The collection focuses on high-end computers and game consoles from the late 1970s through the 2000s. Each machine is restored and then upgraded, usually to the maximum configuration of its era with period-appropriate hardware and sometimes with modern components. The collection is the historical side of the lab's work. It applies the same bench and the same interest in a machine's limits to the best hardware of earlier decades, and it keeps those machines in working order. The restoration and upgrade work is documented in posts on this site.
 
 A full inventory will follow. For now, the photographs below show the collection as it is currently shelved.
 

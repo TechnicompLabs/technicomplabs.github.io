@@ -1,0 +1,20 @@
+{%- comment -%}
+  Hand-off to the dedicated product site. Set benchtop_site.live to true in
+  _config.yml once benchtoplinux.org is ready to receive visitors.
+{%- endcomment -%}
+<section class="handoff" aria-labelledby="handoff-title">
+  <p class="kicker">benchtoplinux.org</p>
+{%- if site.benchtop_site.live %}
+  <h2 id="handoff-title">Explore Benchtop Linux</h2>
+  <p>The Benchtop Linux site has screenshots of the Blueprint Environment, downloads and installation instructions, documentation, hardware support information, and release notes.</p>
+  <p class="handoff-links"><a class="more" href="{{ site.benchtop_site.url }}">Go to benchtoplinux.org &rarr;</a></p>
+{%- else %}
+  <h2 id="handoff-title">Following the project</h2>
+  <p>This page explains what Benchtop Linux is and why it is built the way it is. The project will have its own site at benchtoplinux.org, with screenshots of the Blueprint Environment, downloads and installation instructions, documentation, hardware support information, and release notes. Until that site launches, alpha images are published through the openSUSE Build Service, and the source and design notes are on GitHub.</p>
+  <p class="handoff-links">
+    <a class="more" href="https://build.opensuse.org/project/show/home:technicomp">Alpha images &rarr;</a>
+    <a class="more" href="https://github.com/TechnicompLabs">Source &rarr;</a>
+    <a class="more" href="https://github.com/pauldmartinphd/benchtop-notes">Design notes &rarr;</a>
+  </p>
+{%- endif %}
+</section>

@@ -3,12 +3,14 @@
     {% unless include.compact %}<p class="board-kicker">Technicomp Benchtop Linux &middot; Alpha</p>
     <h2 class="board-title">The operating system for the technical workbench.</h2>{% endunless %}
     <p class="board-lead">Conservative where regressions are expensive. Current where staleness is expensive.</p>
-    <p>Benchtop Linux is a stabilized workstation rolling release derived from openSUSE Tumbleweed and MicroOS. Most of the system follows Tumbleweed, so compilers, language runtimes, libraries, firmware, and graphics stay current. The kernel and the desktop, the components most likely to disrupt a working machine when they change, move more carefully: an LTS kernel by default, and the previous upstream-supported GNOME release.</p>
-    <p>The operating system is an immutable image that arrives complete, and every update is a snapshot that can be rolled back. Users extend their own accounts, with Flatpak for applications and Homebrew for additional command-line tools, rather than modifying the system.</p>
+    {% unless include.compact %}<p>Benchtop Linux is a stabilized workstation rolling release derived from openSUSE Tumbleweed and MicroOS. Most of the system follows Tumbleweed, so compilers, language runtimes, libraries, firmware, and graphics stay current. The kernel and the desktop, the components most likely to disrupt a working machine when they change, move more carefully: an LTS kernel by default, and the previous upstream-supported GNOME release.</p>
+    <p>The operating system is an immutable image that arrives complete, and every update is a snapshot that can be rolled back. Users extend their own accounts, with Flatpak for applications and Homebrew for additional command-line tools, rather than modifying the system.</p>{% endunless %}
     <p class="board-links">
+      {% unless include.compact %}<a href="{{ '/benchtop/' | relative_url }}">About Benchtop Linux &rarr;</a>{% endunless %}
+      {% if site.benchtop_site.live %}<a href="{{ site.benchtop_site.url }}">benchtoplinux.org &rarr;</a>{% endif %}
       <a href="https://github.com/TechnicompLabs">Source &rarr;</a>
       <a href="https://build.opensuse.org/project/show/home:technicomp">Build Service &rarr;</a>
-      <a href="https://github.com/pauldmartinphd/benchtop-notes">Design notes &rarr;</a>
+      {% if include.compact %}<a href="https://github.com/pauldmartinphd/benchtop-notes">Design notes &rarr;</a>{% endif %}
     </p>
   </div>
   <dl class="board-specs">
