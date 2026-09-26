@@ -230,6 +230,11 @@ th { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spac
 .product-header h1 { font-size: clamp(2.2rem, 4.8vw, 3.3rem); line-height: 1.06; letter-spacing: -0.025em; }
 .product-body { padding-top: 1rem; }
 .product-body h2:first-child { margin-top: 2.5rem; }
+.handoff { margin: 3.5rem 0 1rem; padding: 1.6rem 1.75rem 1.5rem; background: var(--surface); border: 1px solid var(--rule); border-top: 3px solid var(--accent); border-radius: 6px; }
+.handoff p.kicker { font-size: 0.72rem; color: var(--warm); margin: 0 0 0.6rem; }
+.prose .handoff h2 { margin-top: 0; }
+.handoff p { color: var(--ink-2); }
+.handoff .handoff-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; margin: 1.2rem 0 0; }
 
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--rule); padding: 2rem 0 2.5rem; }

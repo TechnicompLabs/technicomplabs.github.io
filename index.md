@@ -8,7 +8,7 @@ permalink: /
   <section class="hero">
     <p class="kicker">A working lab</p>
     <h1>Building, measuring, and restoring <span class="accent">computing systems.</span></h1>
-    <p class="lede">Technicomp Labs is the independent workshop of <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a> It develops Technicomp Benchtop Linux, publishes performance research measured on its own hardware, and restores and upgrades high-end computers from every decade.</p>
+    <p class="lede">Technicomp Labs is an independent computing laboratory run by <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a> It builds, measures, modifies, and restores computers, usually to find out how well a machine can be made to work and then to make it work that well. Current projects include an operating system for technical workstations, performance research on the lab's own hardware, and a collection of high-end computers from every decade.</p>
   </section>
 
   <section class="section">
@@ -21,7 +21,7 @@ permalink: /
 
   <section class="section">
     <div class="section-head">
-      <span class="num">02</span><h2>Research</h2>
+      <span class="num">02</span><h2>Performance research</h2>
     </div>
     <div class="split">
       <div>
@@ -36,7 +36,7 @@ permalink: /
 
   <section class="section">
     <div class="section-head">
-      <span class="num">03</span><h2>The Workshop</h2>
+      <span class="num">03</span><h2>Hardware and history</h2>
     </div>
     <div class="cards">
       <a class="card" href="/lab/">
