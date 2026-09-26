@@ -192,7 +192,9 @@ The working rule: **do not modify the operating system; extend your account.**
 
 **Rationale:** The baseline gives the project a clear support target. Benchtop Linux is a workstation operating system, and it is not intended for very old or undersized hardware.
 
-**Not yet established:** the equivalent baseline for ARM systems (ARM images are not yet published), and whether the image itself will require x86-64-v3 or will only be supported on it.
+**Established:** x86-64-v3 is the officially supported level, not a hard requirement. The image follows Tumbleweed's x86-64 baseline and will boot on older CPUs, but systems below the documented baseline are unsupported. Problems reported on them are out of scope.
+
+**Not yet established:** the equivalent baseline for ARM systems (ARM images are coming but not yet published).
 
 ---
 
