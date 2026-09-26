@@ -2,12 +2,12 @@
 title: "Every era at warp speed"
 kicker: "The Collection"
 permalink: /collection/
-subtitle: "High-end vintage computers and game consoles, upgraded to the limits of their era."
+subtitle: "The pinnacle of computing from every decade, restored and upgraded to the limits of its era."
 ---
 
 The collection focuses on high-end computers and game consoles from the late 1970s through the 2000s. Each machine is restored and then upgraded, usually to the maximum configuration of its era with period-appropriate hardware and sometimes with modern components. The restoration and upgrade work is documented in posts on this site.
 
-A full inventory will follow. The photographs below show the collection as it is currently shelved.
+A full inventory will follow. For now, the photographs below show the collection as it is currently shelved.
 
 <figure>
   <img src="/assets/images/collection-compact-macs.jpg" alt="Shelves of compact Macintosh computers with iMac G3s at either end, above a row of Performa and Power Macintosh all-in-ones">

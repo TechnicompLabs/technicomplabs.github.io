@@ -2,7 +2,7 @@
 title: "Bench, rack, and instruments"
 kicker: "The Lab"
 permalink: /lab/
-subtitle: "A purpose-built workshop for performance research, restorations, and upgrades."
+subtitle: "The workshop where the lab's machines are built, measured, restored, and upgraded."
 ---
 
 <figure>
