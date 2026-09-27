@@ -7,7 +7,7 @@ subtitle: "Software, patches, and builds from the lab, released openly where lic
 
 ## Technicomp Benchtop Linux
 
-Technicomp Benchtop Linux is a stabilized workstation rolling release derived from openSUSE Tumbleweed and MicroOS. It combines a conservatively updated kernel and desktop with a current Tumbleweed userspace, an immutable system image, the Blueprint Environment, and workstation tuning that prioritizes low interactive latency. It is currently in alpha.
+Technicomp Benchtop Linux is a stabilized workstation rolling release derived from openSUSE Aeon and built on Tumbleweed. It combines a conservatively updated kernel and desktop with a current Tumbleweed userspace, an immutable system image, the Blueprint Environment, and workstation tuning that prioritizes low interactive latency. It is currently in alpha.
 
 [About Benchtop Linux &rarr;](/benchtop/)
 

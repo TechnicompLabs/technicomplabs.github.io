@@ -2,7 +2,7 @@
 layout: default
 title: "Technicomp Benchtop Linux"
 permalink: /benchtop/
-description: "Technicomp Benchtop Linux is a stabilized workstation rolling release derived from openSUSE Tumbleweed and MicroOS: a complete, immutable workstation operating system for technical work."
+description: "Technicomp Benchtop Linux is a stabilized workstation rolling release derived from openSUSE Aeon and built on Tumbleweed: a complete, immutable workstation operating system for technical work."
 ---
 <div class="wrap">
   <header class="page-header product-header">
@@ -17,7 +17,7 @@ description: "Technicomp Benchtop Linux is a stabilized workstation rolling rele
 
 ## What Benchtop Linux is
 
-Technicomp Benchtop Linux is a stabilized workstation rolling release derived from [openSUSE Aeon](https://aeondesktop.org/), built on openSUSE Tumbleweed and the transactional infrastructure shared with MicroOS. It builds on Aeon's image and installation work, adding a broader workstation toolset, the Blueprint Environment, and its own kernel and desktop release policies.
+Technicomp Benchtop Linux is a stabilized workstation rolling release derived from [openSUSE Aeon](https://aeondesktop.org/), built on openSUSE Tumbleweed and the transactional infrastructure shared with MicroOS. It builds on Aeon's image and installation work, adding a broader workstation toolset, the Blueprint Environment, and its own kernel and desktop release policies. It is intended for people who use Linux as a professional workstation and want the operating system to arrive complete, remain predictable over time, and still provide a current development environment.
 
 Benchtop is opinionated about the operating system and flexible above it. The system image contains and maintains the desktop, hardware integration, development toolchains, privileged services, and other machine-level plumbing. Applications, additional tools, project environments, and user configuration live above that boundary.
 
@@ -52,7 +52,7 @@ Benchtop therefore does not try to make every component equally conservative. It
 
 ## An immutable system, extended per user
 
-Benchtop uses the immutable, transactional model provided by MicroOS. System updates are applied as new snapshots rather than as a sequence of changes to the running root filesystem, and an earlier snapshot remains available for rollback.
+Benchtop uses the immutable, transactional model that Aeon shares with openSUSE MicroOS. System updates are applied as new snapshots rather than as a sequence of changes to the running root filesystem, and an earlier snapshot remains available for rollback.
 
 The system package set is not intended to be customized by the user. GNOME Software manages graphical applications, installing Flatpaks from Flathub into the user's own installation and AppImages from AppImageHub through an AppImage backend. AppImages are installed under `~/Applications/`, with desktop launchers generated for them. Homebrew provides additional command-line software and alternate or pinned toolchains in the user's profile. Project dependencies are managed by their native language ecosystems, and workloads that need an independently mutable Linux userspace belong in containers or virtual machines.
 

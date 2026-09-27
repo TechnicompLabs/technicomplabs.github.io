@@ -17,7 +17,8 @@ Conventions used below:
 **Established**
 
 - Full name: **Technicomp Benchtop Linux**. Short form: **Benchtop Linux**. Spelled "Technicomp," never "TechniComp."
-- Category: a **stabilized workstation rolling release derived from openSUSE Tumbleweed and MicroOS**.
+- Category: a **stabilized workstation rolling release derived from openSUSE Aeon and built on Tumbleweed**.
+- Relationship of the three openSUSE projects: **Aeon is the direct lineage; Tumbleweed is the distribution base; MicroOS provides the shared transactional infrastructure.** Short form: "Derived from openSUSE Aeon and built on Tumbleweed." Spec-list form: "openSUSE Aeon / Tumbleweed." Explain MicroOS only where the architecture is discussed. (Supersedes the earlier guidance to name MicroOS instead of Aeon.)
 - Lineage: Benchtop is derived from [openSUSE Aeon](https://aeondesktop.org/). The image repository is forked from Aeon's KIWI image description and keeps Aeon's installation and storage work (the tik installer, systemd-repart, LUKS2 with TPM2, btrfs read-only snapshots, UEFI and systemd-boot). Credit Aeon plainly; don't make "fork" the product's identity. Benchtop adds a broader workstation toolset, the Blueprint Environment, and its own kernel and desktop release policies.
 - Desktop: the **Blueprint Environment** is the complete, integrated GNOME-based desktop experience. The **Blueprint Shell** is only the GNOME Shell layer of it (extensions, Shell configuration, Shell behavior). Neither is a fork of GNOME.
 - GNOME policy: in prose, "**the previous upstream-supported GNOME release**" (or "the previous supported GNOME release"). GNOME's own name for this branch is "old stable," two words; "old-stable" is only GNOME's release-type label. Never write "previous stable," which implies the release is unsupported.
@@ -106,7 +107,7 @@ Useful short framing: *not every part of an operating system fails in the same w
 
 **Established**
 
-- Built on the immutable, transactional model of openSUSE MicroOS.
+- Built on the immutable, transactional model that Aeon shares with openSUSE MicroOS.
 - Updates are applied to a new btrfs snapshot, not to the running system. The machine switches to that snapshot at the next boot.
 - If an update causes a problem, the previous snapshot is still available to roll back to.
 
