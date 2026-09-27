@@ -18,6 +18,7 @@ Conventions used below:
 
 - Full name: **Technicomp Benchtop Linux**. Short form: **Benchtop Linux**. Spelled "Technicomp," never "TechniComp."
 - Category: a **stabilized workstation rolling release derived from openSUSE Tumbleweed and MicroOS**.
+- Lineage: Benchtop is derived from [openSUSE Aeon](https://aeondesktop.org/). The image repository is forked from Aeon's KIWI image description and keeps Aeon's installation and storage work (the tik installer, systemd-repart, LUKS2 with TPM2, btrfs read-only snapshots, UEFI and systemd-boot). Credit Aeon plainly; don't make "fork" the product's identity. Benchtop adds a broader workstation toolset, the Blueprint Environment, and its own kernel and desktop release policies.
 - Desktop: the **Blueprint Environment** is the complete, integrated GNOME-based desktop experience. The **Blueprint Shell** is only the GNOME Shell layer of it (extensions, Shell configuration, Shell behavior). Neither is a fork of GNOME.
 - GNOME policy: in prose, "**the previous upstream-supported GNOME release**" (or "the previous supported GNOME release"). GNOME's own name for this branch is "old stable," two words; "old-stable" is only GNOME's release-type label. Never write "previous stable," which implies the release is unsupported.
 - Kernel policy: **LTS by default; a current kernel for hardware enablement.**

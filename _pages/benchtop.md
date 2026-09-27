@@ -17,27 +17,28 @@ description: "Technicomp Benchtop Linux is a stabilized workstation rolling rele
 
 ## What Benchtop Linux is
 
-Technicomp Benchtop Linux is a stabilized workstation rolling release derived from openSUSE Tumbleweed and MicroOS. It is intended for people who use Linux as a professional workstation and want the operating system to arrive complete, remain predictable over time, and still provide a current development environment.
+Technicomp Benchtop Linux is a stabilized workstation rolling release derived from [openSUSE Aeon](https://aeondesktop.org/), built on openSUSE Tumbleweed and the transactional infrastructure shared with MicroOS. It builds on Aeon's image and installation work, adding a broader workstation toolset, the Blueprint Environment, and its own kernel and desktop release policies.
 
 Benchtop is opinionated about the operating system and flexible above it. The system image contains and maintains the desktop, hardware integration, development toolchains, privileged services, and other machine-level plumbing. Applications, additional tools, project environments, and user configuration live above that boundary.
 
 ## The work it supports
 
-Benchtop is one workstation for many kinds of technical work. An immutable workstation only works well if the image already contains the system-level pieces that work depends on, so Benchtop supplies the drivers, services, permissions, toolchains, and desktop integration, while users choose their applications and maintain their own project environments. The tools named below are representative; the full inventory is in the [package patterns](https://github.com/TechnicompLabs/benchtop-patterns).
+Benchtop supplies the drivers, services, toolchains, and desktop integration for a broad range of technical work. Users choose their applications and maintain their own project environments.
 
-For software development, the image includes GCC and Clang, compilers and interpreters for C, C++, Rust, Go, Java, Python, JavaScript, Haskell, and many other languages, and the package managers of their ecosystems, such as pip, npm, Cargo, and opam. CMake, Meson, and Ninja handle native builds, Git, Jujutsu, and Mercurial handle version control, and GDB, Valgrind, perf, and bpftrace cover debugging and performance analysis. Data science builds on the same foundation, with Python, R, and GNU Octave for scientific computing and statistical analysis, jq and Miller for data processing, and clients for PostgreSQL, MariaDB, and SQLite. Project libraries and datasets stay with the user, managed through each language's own tools.
+| Work | Scope |
+|---|---|
+| Software development | Compilers, language environments, build tools, version control, debugging, and performance analysis. |
+| AI | Local inference and model development, with GPU and compute integration. |
+| Data science | Scientific computing, statistical analysis, data processing, and database access. |
+| Virtualization | KVM/QEMU virtual machines, containers, and isolated Linux environments. |
+| System administration and DevOps | Remote access, configuration management, infrastructure automation, networking, storage, backup, and recovery. |
+| Security | Vulnerability assessment, network analysis, host auditing, and digital forensics. |
+| Reverse engineering | Disassembly, decompilation, binary inspection, and debugging. |
+| Electronics and embedded development | Serial consoles, microcontroller programming, firmware work, on-chip debugging, and logic analyzers. |
+| Content creation | Professional audio, video, graphics, and publishing, with low-latency audio and hardware video acceleration. |
+| Gaming | Graphics, controller support, and performance management. |
 
-Local AI work, both inference and model development, depends on GPU and compute integration at the system level: Vulkan on AMD, Intel, and NVIDIA graphics, the ROCm runtime for AMD GPUs, and llama.cpp for running models locally. The models, frameworks, and project environments are the user's to choose and manage.
-
-Virtualization covers KVM and QEMU virtual machines and Podman containers, whether the purpose is running another operating system, isolating a development environment, or hosting local services. Distrobox provides conventional, mutable Linux environments for tools that expect one, and Cockpit manages virtual machines, containers, and storage from a browser.
-
-For system administration and DevOps, the image carries remote access through OpenSSH, Mosh, and remote desktop; configuration management with Ansible; infrastructure tools such as OpenTofu, kubectl, and Helm; network diagnostics; and storage, backup, and recovery tools including LVM, mdadm, restic, Borg, and ddrescue. The image includes the administration tools needed to manage other machines without routinely adding packages to the workstation's base system.
-
-Security work includes vulnerability assessment, network analysis with Wireshark and tcpdump, host auditing with OpenSCAP and the SCAP Security Guide, and digital forensics with The Sleuth Kit. Reverse engineering has its own tools for disassembly, decompilation, binary inspection, and debugging, including rizin with the Ghidra decompiler, binwalk for firmware images, and GDB, strace, and ltrace.
-
-Electronics and embedded development are supported directly: serial consoles through picocom, microcontroller programming with avrdude and dfu-util, on-chip debugging with OpenOCD, firmware work with flashrom, and logic analyzers through sigrok-cli, with the device access these tools need configured by the system.
-
-Content creation spans professional audio, video, graphics, and publishing. PipeWire provides low-latency audio with JACK compatibility, the system supplies codecs and hardware video decoding, and pandoc handles document conversion for publishing. The creative applications themselves, from digital audio workstations to video and image editors, are installed per user. Gaming relies on the same graphics stack, with controller support and GameMode for performance management while a game runs.
+The [package patterns](https://github.com/TechnicompLabs/benchtop-patterns) describe the system-level tools included for these workflows.
 
 ## A stabilized rolling release
 
