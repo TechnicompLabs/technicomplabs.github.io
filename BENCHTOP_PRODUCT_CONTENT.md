@@ -209,9 +209,11 @@ The working rule: **do not modify the operating system; extend your account.**
 
 **Rationale:** ARMv8.2-A plays roughly the role that x86-64-v3 plays on x86. Most ARM cores lack SMT, so the core count is stated without threads. UEFI boot keeps ARM to one image rather than per-device boot arrangements, which fits the single tested system image. Requiring upstream kernel and Mesa support is the ARM counterpart of the graphics requirement, because many ARM GPUs work only with vendor drivers.
 
+**Established:** Apple Silicon Macs are in scope (decided September 2026). They are an exception to the upstream-kernel requirement above, because Linux on them currently depends on the Asahi project's kernel work, much of which is not yet upstream. Their GPU driver is in upstream Mesa.
+
 **Not yet established:**
 
-- Whether Apple Silicon Macs are in scope. Linux on them depends on the Asahi kernel rather than the upstream kernel, so the recommendation is to leave them out.
+- How Apple Silicon support is delivered (see below).
 - Whether some ARM platforms, where upstream support is still moving quickly, should default to the current kernel instead of LTS.
 
 ---
