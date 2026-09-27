@@ -297,7 +297,7 @@ Representative tools are taken from [patterns-tc-benchtop.spec](https://github.c
 | Gaming | Games and the integration they need: graphics, controllers, performance management | Vulkan and Mesa, Steam device rules for controllers, GameMode |
 | Electronics and embedded development | Serial consoles, microcontroller programming and debugging, firmware work, logic analyzers | picocom, avrdude, dfu-util, OpenOCD, sigrok-cli, flashrom |
 
-**System administration on an immutable workstation:** because the tools for reaching and changing other systems are part of the image, administering them does not require modifying the workstation itself. The workstation's own system layer stays consistent and recoverable while the infrastructure it manages changes.
+**System administration on an immutable workstation:** The image includes the administration tools needed to manage other machines without routinely adding packages to the workstation's base system.
 
 Keep the distinction between *system readiness* (what the image provides) and *per-user applications* (what users install) explicit wherever workflows are described.
 
