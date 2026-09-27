@@ -7,7 +7,7 @@
     <p class="board-kicker">Technicomp Benchtop Linux &middot; Alpha</p>
     <h2 class="board-title">The operating system for the technical workbench.</h2>
     <p>Benchtop Linux is a stabilized workstation rolling release built on openSUSE Tumbleweed and MicroOS. Most of the system stays current with Tumbleweed, while the kernel and desktop move more cautiously to reduce disruptive workstation regressions.</p>
-    <p>The operating system is a complete, immutable image. Applications and additional tools live in the user's profile through Flatpak and Homebrew rather than being layered into the system.</p>
+    <p>The operating system is a complete, immutable image. Applications and additional tools live in the user's profile through Flatpak, AppImage, and Homebrew rather than being layered into the system.</p>
     {%- endif %}
     <p class="board-links">
       {% unless include.compact %}<a href="{{ '/benchtop/' | relative_url }}">About Benchtop Linux &rarr;</a>{% endunless %}
@@ -23,7 +23,7 @@
     <div><dt>Kernel</dt><dd>LTS by default &middot; Current for hardware enablement</dd></div>
     <div><dt>Desktop</dt><dd>Blueprint Environment &middot; previous supported GNOME release</dd></div>
     <div><dt>System</dt><dd>Immutable image, transactional updates, snapshots</dd></div>
-    <div><dt>Apps</dt><dd>Flatpak and Homebrew, per user</dd></div>
+    <div><dt>Apps</dt><dd>Flatpak, AppImage, and Homebrew, per user</dd></div>
     <div><dt>Development</dt><dd>Major language toolchains included</dd></div>
     <div><dt>Latency</dt><dd>Low interactive latency &middot; real-time audio ready</dd></div>
     <div><dt>Hardware</dt><dd>x86 and ARM</dd></div>

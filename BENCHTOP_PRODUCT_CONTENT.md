@@ -134,7 +134,7 @@ The working rule: **do not modify the operating system; extend your account.**
 | Layer | Owns | Mechanism |
 |---|---|---|
 | System image | OS, desktop platform, drivers, firmware, privileged services, hardware integration, language toolchains | Benchtop Linux (transactional updates) |
-| Graphical applications | Per-user apps | Flatpak, installed in the user's profile |
+| Graphical applications | Per-user apps | GNOME Software, which installs Flatpaks from Flathub into the user's own installation and AppImages from AppImageHub through an AppImage backend; AppImages go under `~/Applications/` with generated desktop launchers |
 | Extra CLI software; alternate or pinned toolchain versions | Per-user tools | Homebrew, per user |
 | Project dependencies | Libraries used by a project | The language's own package manager (pip/venv, Cargo, npm, RubyGems, etc.) |
 | Environments needing their own mutable package set | Other distributions, isolated toolchains, services | Containers and virtual machines |
@@ -146,7 +146,11 @@ The working rule: **do not modify the operating system; extend your account.**
 >
 > Users can still customize extensively through Flatpak, Homebrew, language ecosystems, containers, virtual machines, their home directories, and ordinary user configuration. The one firm boundary is the base operating system, which stays consistent, recoverable, and identical to what was tested.
 
-**Not yet established:** which Flatpak remotes are configured by default, how Homebrew is bootstrapped, and which container and VM tools ship by default. Installation and usage instructions for each layer belong in the documentation.
+**Application management** (owner's decision, September 2026): GNOME Software is the application manager. Flatpak and AppImage are the formats for graphical applications. Flathub is added to each user's own Flatpak installation, not system-wide. An AppImage backend for GNOME Software integrates AppImageHub, so AppImages are found and installed through the same interface as other applications. Each AppImage is installed per user in `~/Applications/`, with a generated `.desktop` entry in `~/.local/share/applications/` so it appears in the launcher; updates keep the launcher pointed at the installed file, and uninstalling removes both. Homebrew remains the path for additional command-line tools. Bazaar is not part of the direction.
+
+**Container and VM tools in the image:** Podman, Buildah, Skopeo, and Distrobox for containers; Cockpit with its machines, Podman, storage, and networking modules for browser-based management.
+
+**Not yet established:** how Homebrew is bootstrapped. Installation and usage instructions for each layer belong in the documentation.
 
 ---
 
@@ -191,6 +195,8 @@ The working rule: **do not modify the operating system; extend your account.**
 | Graphics | Hardware acceleration suitable for the supported GNOME/Wayland stack |
 
 **Rationale:** The baseline gives the project a clear support target. Benchtop Linux is a workstation operating system, and it is not intended for very old or undersized hardware.
+
+**How to present it** (as published on the Labs page): this is the hardware Benchtop is designed and tested for, not a promise that every workload fits within it. Large builds, several virtual machines at once, large datasets, and local models may need substantially more memory, storage, or GPU capacity. The 1 TB figure is the capacity of the drive, not the size of the installation. The x86-64-v3 level applies only to x86; never apply it to ARM.
 
 **Established:** x86-64-v3 is the officially supported level, not a hard requirement. The image follows Tumbleweed's x86-64 baseline and will boot on older CPUs, but systems below the documented baseline are unsupported. Problems reported on them are out of scope.
 
@@ -274,10 +280,28 @@ Short framing: a desktop should not be treated as a throughput-oriented server w
 
 **Established**
 
-The system image provides what each workflow needs at the operating-system level, such as drivers, services, permissions, and toolchains. Most of the applications used in these fields are installed per user, as Flatpaks, through Homebrew, or inside containers, where they stay current and under the user's control.
+These are uses of one technical workstation, not separate editions or audiences, and none of them is secondary. The system image provides what each needs at the operating-system level (drivers, services, permissions, toolchains, and desktop integration). Users choose their applications, which are installed per user through GNOME Software (Flatpak and AppImage), Homebrew, or containers, and they maintain their own project environments.
 
-| Workflow | Scope |
-|---|---|
+Representative tools are taken from [patterns-tc-benchtop.spec](https://github.com/TechnicompLabs/benchtop-patterns/blob/main/patterns-tc-benchtop.spec). The spec is the full inventory; these examples illustrate each use rather than listing everything.
+
+| Use | Scope | Representative tools in the image |
+|---|---|---|
+| AI | Local inference and model development, with system-level GPU and compute integration; models and project environments managed by the user | Vulkan (AMD, Intel, NVIDIA), ROCm/HIP, llama.cpp with its Vulkan backend, nvtop |
+| Virtualization | KVM/QEMU virtual machines and containers: other operating systems, isolated development environments, local services | Podman, Buildah, Skopeo, Distrobox, Cockpit Machines |
+| Software development | Compilers, interpreters, native build tools, language package managers, version control, debugging, performance analysis | GCC, Clang/LLVM, Rust, Go, Java, Python, Node.js, Haskell, OCaml, Erlang/Elixir, and more; pip, npm, Cargo, opam, Hex; CMake, Meson, Ninja; Git, Jujutsu, Mercurial; GDB, Valgrind, perf, bpftrace |
+| System administration and DevOps | Remote access, configuration management, networking, infrastructure automation, storage, backup, recovery | OpenSSH, Mosh, GNOME Remote Desktop, Cockpit; Ansible; OpenTofu, kubectl, Helm, Kustomize; Wireshark, mtr, iperf3; LVM, mdadm, cryptsetup; restic, Borg; ddrescue, TestDisk |
+| Security | Vulnerability assessment, network analysis, host auditing, digital forensics | Wireshark/tshark, tcpdump; OpenSCAP with the SCAP Security Guide; The Sleuth Kit; YARA, checksec |
+| Reverse engineering | Disassembly, decompilation, binary inspection, debugging | rizin with rz-ghidra, binwalk, GDB, strace, ltrace, elfutils, patchelf |
+| Content creation | Low-latency and professional audio, video, graphics, publishing | PipeWire with JACK support, GStreamer codecs and hardware video decoding, pandoc; creative applications installed per user |
+| Data science | Scientific computing, statistical analysis, data processing, database access; project libraries and datasets managed by the user | Python, R, GNU Octave; jq, Miller, yq; PostgreSQL, MariaDB, and SQLite clients; ODBC drivers |
+| Gaming | Games and the integration they need: graphics, controllers, performance management | Vulkan and Mesa, Steam device rules for controllers, GameMode |
+| Electronics and embedded development | Serial consoles, microcontroller programming and debugging, firmware work, logic analyzers | picocom, avrdude, dfu-util, OpenOCD, sigrok-cli, flashrom |
+
+**System administration on an immutable workstation:** because the tools for reaching and changing other systems are part of the image, administering them does not require modifying the workstation itself. The workstation's own system layer stays consistent and recoverable while the infrastructure it manages changes.
+
+Keep the distinction between *system readiness* (what the image provides) and *per-user applications* (what users install) explicit wherever workflows are described.
+
+---|---|
 | AI | Local inference and model development |
 | Virtualization | KVM and QEMU virtual machines, and containers |
 | Software development | Compilers, interpreters, debuggers, and build tools |
