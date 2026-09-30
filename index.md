@@ -8,7 +8,7 @@ permalink: /
   <section class="hero">
     <p class="kicker">A working lab</p>
     <h1>Building, measuring, and restoring <span class="accent">computing systems.</span></h1>
-    <p class="lede">Technicomp Labs is the independent computing laboratory of <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a> The lab builds and modifies current systems, measures their limits, and restores computers and game consoles from earlier eras. Current work includes Benchtop Linux, performance research on local AI systems, hardware and firmware projects, and a working collection spanning five decades of personal computing.</p>
+    <p class="lede">I’m <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a>, and Technicomp Labs is my independent computing laboratory. I build and modify current systems, measure their limits, and restore computers and game consoles from earlier eras. The work includes Benchtop Linux, local AI performance research, hardware and firmware projects, and a working collection spanning five decades of personal computing.</p>
   </section>
 
   <section class="section">
@@ -27,7 +27,7 @@ permalink: /
       <div>
         <p class="kicker">LLM Performance Engineering Notebook</p>
         <h3>Finding the real speed limit of local inference.</h3>
-        <p>An open lab notebook on the inference speed of large Mixture-of-Experts models. Each investigation starts by measuring the hardware limit, predicts performance from a model of that limit, and then changes one variable at a time. The notebook includes a llama.cpp scheduler patch that raised prefill throughput 13.7%, per-model results, raw logs, and the hypotheses that testing did not support.</p>
+        <p>The notebook records my experiments on local inference, beginning with large Mixture-of-Experts models. I use hardware measurements and performance estimates to identify limits, then test configuration and code changes to understand where time goes. It includes a llama.cpp scheduler patch that raised prefill throughput 13.7% in the July comparison, per-model results, raw logs, and the hypotheses that testing did not support.</p>
         <p><a class="more" href="https://github.com/pauldmartinphd/llm-performance-engineering-notebook">Read the notebook &rarr;</a></p>
       </div>
       <img src="/assets/images/galactus-build.jpg" alt="Galactus, the lab's inference server: four GPUs and an EPYC processor in a compact chassis">
@@ -44,7 +44,7 @@ permalink: /
         <div class="card-body">
           <p class="kicker">The Lab</p>
           <h3>Bench, rack, and instruments</h3>
-          <p>The bench, test equipment, and servers behind the performance research, restorations, and upgrades.</p>
+          <p>The bench, instruments, and servers I use to measure performance, diagnose hardware, and restore older machines.</p>
         </div>
       </a>
       <a class="card" href="/collection/">

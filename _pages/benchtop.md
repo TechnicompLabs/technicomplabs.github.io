@@ -19,11 +19,11 @@ description: "Technicomp Benchtop Linux is a stabilized workstation rolling rele
 
 Technicomp Benchtop Linux is a stabilized workstation rolling release derived from [openSUSE Aeon](https://aeondesktop.org/), built on openSUSE Tumbleweed and the transactional infrastructure shared with MicroOS. It builds on Aeon's image and installation work, adding a broader workstation toolset, the Blueprint Environment, and its own kernel and desktop release policies. It is intended for people who use Linux as a professional workstation and want the operating system to arrive complete, remain predictable over time, and still provide a current development environment.
 
-Benchtop is opinionated about the operating system and flexible above it. The system image contains and maintains the desktop, hardware integration, development toolchains, privileged services, and other machine-level plumbing. Applications, additional tools, project environments, and user configuration live above that boundary.
+Benchtop maintains the desktop, hardware integration, development toolchains, privileged services, and other machine-level plumbing in the system image. Applications, additional tools, project environments, and user configuration live above that boundary, allowing users to extend their working environment while the operating system remains consistent.
 
 ## The work it supports
 
-Benchtop supplies the drivers, services, toolchains, and desktop integration for a broad range of technical work. Users choose their applications and maintain their own project environments.
+Benchtop supplies the drivers, services, toolchains, and desktop integration for a broad range of technical work, while users choose their applications and maintain their own project environments.
 
 | Work | Scope |
 |---|---|
@@ -46,7 +46,7 @@ Not every part of an operating system benefits from the same update policy. Benc
 
 The kernel and desktop move more cautiously because regressions there are disproportionately disruptive to a working machine. Benchtop uses an LTS kernel by default, with a current kernel available when newer hardware requires it. The Blueprint Environment follows the previous upstream-supported GNOME release, continuing to receive upstream fixes while avoiding the earliest part of each major desktop transition.
 
-Benchtop therefore does not try to make every component equally conservative. It keeps the parts that benefit from currency moving with Tumbleweed while giving the kernel and desktop a longer stabilization window.
+This release policy keeps the parts that benefit from current software moving with Tumbleweed while giving the kernel and desktop a longer stabilization window.
 
 > For the desktop in particular, the informal version is to let other people be the beta testers.
 
@@ -56,7 +56,7 @@ Benchtop uses the immutable, transactional model that Aeon shares with openSUSE 
 
 The system package set is not intended to be customized by the user. GNOME Software manages graphical applications, installing Flatpaks from Flathub into the user's own installation and AppImages from AppImageHub through an AppImage backend. AppImages are installed under `~/Applications/`, with desktop launchers generated for them. Homebrew provides additional command-line software and alternate or pinned toolchains in the user's profile. Project dependencies are managed by their native language ecosystems, and workloads that need an independently mutable Linux userspace belong in containers or virtual machines.
 
-The operating system stays consistent while the user's environment remains flexible.
+Because these extensions live outside the system package set, users can adapt their environment while the operating system remains consistent.
 
 ## The Blueprint Environment
 
@@ -64,7 +64,7 @@ Benchtop's desktop is the Blueprint Environment, a GNOME-based desktop whose beh
 
 Blueprint combines GNOME with a maintained set of extensions, defaults, and system configuration that define how the Benchtop desktop behaves. The objective is consistency across machines and releases: controls remain where users expect them, common actions behave predictably, and upgrading the operating system does not repeatedly reorganize the desktop.
 
-The Blueprint Shell is the GNOME Shell-specific portion of that environment: its extensions, configuration, and behavior. Blueprint is not a fork of GNOME; it is Benchtop's integrated GNOME configuration, maintained as part of the operating system.
+The Blueprint Shell is the GNOME Shell-specific portion of that environment, covering its extensions, configuration, and behavior. Blueprint is Benchtop's integrated GNOME configuration, maintained as part of the operating system; it is not a fork of GNOME.
 
 ## Responsive under load
 

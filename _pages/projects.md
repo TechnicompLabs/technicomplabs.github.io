@@ -7,17 +7,17 @@ subtitle: "Software, patches, and builds from the lab, released openly where lic
 
 ## Technicomp Benchtop Linux
 
-Technicomp Benchtop Linux is a stabilized workstation rolling release derived from openSUSE Aeon and built on Tumbleweed. It combines a conservatively updated kernel and desktop with a current Tumbleweed userspace, an immutable system image, the Blueprint Environment, and workstation tuning that prioritizes low interactive latency. It is currently in alpha.
+I’m building Technicomp Benchtop Linux as a stabilized workstation rolling release derived from openSUSE Aeon and built on Tumbleweed. Its kernel and desktop move more cautiously because regressions there can interrupt work, while the Tumbleweed userspace keeps development tools current. The immutable system image includes the Blueprint Environment and workstation tuning that prioritizes low interactive latency. Benchtop is currently in alpha.
 
 [About Benchtop Linux &rarr;](/benchtop/)
 
 ## LLM Performance Engineering Notebook
 
-An open lab notebook on the inference speed limits of large Mixture-of-Experts models, measured on the lab's own servers. It documents the method (measure the hardware limit first, predict performance from a model, and then change one variable at a time), per-model results, raw logs, and the hypotheses that testing did not support.
+The notebook records my experiments on local inference, beginning with large Mixture-of-Experts models on Galactus. The investigation starts with measured hardware limits and a model of time per token, then tests changes to the configuration and code. Per-model results, raw logs, and the hypotheses that testing did not support make the reasoning behind each conclusion available alongside the measurements.
 
-Its first concrete result is a patch to the llama.cpp scheduler that raised prefill throughput 13.7% on the reference machine. The patch spreads offloaded expert computations across all GPUs instead of sending them to one, and removes an unnecessary GPU-to-host transfer during prefill. The approach applies to any configuration that keeps expert weights in system memory, and the patch is being submitted upstream.
+One result is a patch to the llama.cpp scheduler that raised prefill throughput 13.7% on Galactus in the July comparison, with 1 TB of RAM. It distributes offloaded expert computation across the GPUs and bypasses a routing-index readback that serialized the work during prefill. Distribution alone produced no meaningful throughput gain; both changes were needed for the measured improvement. The patch addresses CPU-resident expert offload, but the result is specific to the tested configuration. The source and measurements are public; I have not submitted an upstream PR.
 
-The measurements run on Galactus, an AMD EPYC 7713 system with 2 TB of eight-channel DDR4 memory and four AMD Radeon Pro V620 GPUs (128 GB of VRAM), built to run large open-weight models locally. The design prioritizes memory bandwidth, which limits token generation for these models.
+Galactus now has an AMD EPYC 7713, 2 TB of eight-channel DDR4 memory, and four AMD Radeon Pro V620 GPUs (128 GB of VRAM). I built it to run large open-weight models locally, prioritizing memory bandwidth because streaming CPU-resident expert weights accounts for much of the token-generation time. The notebook records the memory population and build used for each comparison.
 
 <figure>
   <img src="/assets/images/galactus-build.jpg" alt="Galactus: LLM inference server build with four AMD Radeon Pro V620 GPUs and an EPYC 7713 in a Jonsbo N5 chassis">
