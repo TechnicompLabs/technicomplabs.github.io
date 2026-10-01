@@ -56,8 +56,6 @@ Benchtop uses the immutable, transactional model that Aeon shares with openSUSE 
 
 The system package set is not intended to be customized by the user. GNOME Software manages graphical applications, installing Flatpaks from Flathub into the user's own installation and AppImages from AppImageHub through an AppImage backend. AppImages are installed under `~/Applications/`, with desktop launchers generated for them. Homebrew provides additional command-line software and alternate or pinned toolchains in the user's profile. Project dependencies are managed by their native language ecosystems, and workloads that need an independently mutable Linux userspace belong in containers or virtual machines.
 
-Because these extensions live outside the system package set, users can adapt their environment while the operating system remains consistent.
-
 ## The Blueprint Environment
 
 Benchtop's desktop is the Blueprint Environment, a GNOME-based desktop whose behavior and presentation are maintained as part of the operating system.
