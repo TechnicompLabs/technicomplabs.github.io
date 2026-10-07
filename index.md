@@ -22,7 +22,7 @@ permalink: /
 
   <section class="section">
     <div class="section-head">
-      <span class="num">02</span><h2>Measurement and tuning</h2>
+      <span class="num">02</span><h2>Applied research</h2>
     </div>
     <div class="split">
       <div>

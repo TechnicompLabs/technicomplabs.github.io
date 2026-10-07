@@ -21,7 +21,7 @@ I use the main bench for board-level work. It has a programmable bench power sup
 
 ## Compute
 
-The current systems include a mobile rack with a virtualization host, hot-swap storage, and battery backup, alongside the custom machines used for performance research. The largest is Galactus, the EPYC inference server. I publish measurements from these machines in the [LLM Performance Engineering Notebook](https://github.com/pauldmartinphd/llm-performance-engineering-notebook).
+The current systems include a mobile rack with a virtualization host, hot-swap storage, and battery backup, alongside the custom machines used for applied research. The largest is Galactus, the EPYC inference server. I publish measurements from these machines in the [LLM Performance Engineering Notebook](https://github.com/pauldmartinphd/llm-performance-engineering-notebook).
 
 <figure>
   <img src="/assets/images/galactus-build.jpg" alt="Galactus: LLM inference server build with four AMD Radeon Pro V620 GPUs and an EPYC 7713 in a Jonsbo N5 chassis">
