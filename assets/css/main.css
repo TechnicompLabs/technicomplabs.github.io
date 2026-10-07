@@ -185,6 +185,10 @@ th { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spac
 .board-title { font-family: var(--display); font-weight: 800; font-size: clamp(1.8rem, 3.6vw, 2.5rem); line-height: 1.08; letter-spacing: -0.02em; color: var(--chalk); margin: 0 0 1.1rem; }
 .board-text p { color: var(--chalk-2); max-width: 46rem; }
 .board-text strong { color: var(--chalk); font-weight: 600; }
+/* The two paragraphs sit in the same two columns as the spec grid below */
+.board-prose { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; }
+.board-prose p { max-width: none; margin: 0; }
+@media (max-width: 40rem) { .board-prose { grid-template-columns: minmax(0, 1fr); row-gap: 1rem; } }
 .board-lead { font-family: var(--display); font-weight: 700; font-size: 1.25rem; color: var(--chalk) !important; margin-bottom: 0.9rem; }
 .board-motto { font-style: italic; color: var(--chalk) !important; }
 .board-links { display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; margin: 1.6rem 0 0; }

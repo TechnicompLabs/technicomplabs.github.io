@@ -1,13 +1,17 @@
 <section class="board">
   <div class="board-text">
     {%- if include.compact %}
+    <div class="board-prose">
     <p><strong>Benchtop Linux is a complete Linux workstation derived from openSUSE Aeon and built on Tumbleweed.</strong> Most of the software stack follows Tumbleweed, while the kernel and desktop move more cautiously because regressions in either can disrupt a working machine.</p>
     <p>The system is delivered as a complete, immutable image with the development tools, hardware support, and system integration expected on a technical workstation already in place. Applications and additional tools live in the user's profile rather than altering the operating system.</p>
+    </div>
     {%- else %}
     <p class="board-kicker">Technicomp Benchtop Linux &middot; Alpha</p>
     <h2 class="board-title">The operating system for the technical workbench.</h2>
+    <div class="board-prose">
     <p>Benchtop Linux is a stabilized workstation rolling release derived from openSUSE Aeon and built on Tumbleweed. Most of the system stays current with Tumbleweed, while the kernel and desktop move more cautiously to reduce disruptive workstation regressions.</p>
     <p>The operating system is delivered as a complete, immutable image, while applications and additional tools live in the user's profile through Flatpak, AppImage, and Homebrew rather than being layered into the system.</p>
+    </div>
     {%- endif %}
     <p class="board-links">
       {% unless include.compact %}<a href="{{ '/benchtop/' | relative_url }}">About Benchtop Linux &rarr;</a>{% endunless %}
