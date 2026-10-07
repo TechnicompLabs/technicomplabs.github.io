@@ -8,7 +8,7 @@ permalink: /
   <section class="hero">
     <p class="kicker">A personal lab</p>
     <h1>Building, measuring, and restoring <span class="accent">computing systems.</span></h1>
-    <p class="lede">I’m <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a>, and Technicomp Labs is my independent computing laboratory. This site is where I publish the open-source projects I release and write about restoring and upgrading vintage computers, particularly high-end systems, to their maximum performance. It is a personal, noncommercial project that follows my own interests, not client work or practical need.</p>
+    <p class="lede">I’m <a href="https://pauldmartin.phd">Paul D. Martin, Ph.D.</a>, and Technicomp Labs is my independent computing laboratory. This site is where I publish the open-source projects I release and write about restoring and upgrading vintage computers, particularly high-end systems, to their maximum performance. It is a personal, noncommercial project that follows my interests in computer history and retro gaming, in systems and virtualization, in open source and self-hosting, and in technology education, and it is not client work.</p>
     <p class="lede-links"><a class="more" href="/blog/">Blog &rarr;</a> <a class="more" href="/projects/">Projects &rarr;</a> <a class="more" href="/about/">About me &rarr;</a></p>
   </section>
 
@@ -22,7 +22,7 @@ permalink: /
 
   <section class="section">
     <div class="section-head">
-      <span class="num">02</span><h2>Performance research</h2>
+      <span class="num">02</span><h2>Measurement and tuning</h2>
     </div>
     <div class="split">
       <div>
