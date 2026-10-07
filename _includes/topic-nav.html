@@ -1,0 +1,6 @@
+<nav class="topic-nav" aria-label="Blog topics">
+  <a href="{{ '/blog/' | relative_url }}"{% unless page.topic %}{% if page.url == '/blog/' %} class="current" aria-current="page"{% endif %}{% endunless %}>All posts</a>
+  {%- for t in site.data.topics %}
+  <a href="{{ '/blog/topic/' | append: t.slug | append: '/' | relative_url }}"{% if page.topic == t.slug %} class="current" aria-current="page"{% endif %}>{{ t.title }}</a>
+  {%- endfor %}
+</nav>

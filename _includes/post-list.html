@@ -1,4 +1,4 @@
-{% assign posts = include.posts | default: site.posts %}
+{% if include.posts == nil %}{% assign posts = site.posts %}{% else %}{% assign posts = include.posts %}{% endif %}
 {% if posts.size > 0 %}
 <ol class="archive">
   {% for post in posts limit: include.limit %}
@@ -15,5 +15,5 @@
   {% endfor %}
 </ol>
 {% else %}
-<p class="empty">The first write-ups are in progress.</p>
+<p class="empty">{{ include.empty | default: "The first write-ups are in progress." }}</p>
 {% endif %}
