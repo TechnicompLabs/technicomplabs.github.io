@@ -1,10 +1,10 @@
-- title: Benchtop Linux
-  short: Benchtop
-  url: /benchtop/
 - title: Blog
   url: /blog/
 - title: Projects
   url: /projects/
+- title: Benchtop Linux
+  short: Benchtop
+  url: /benchtop/
 - title: Lab
   url: /lab/
 - title: Collection

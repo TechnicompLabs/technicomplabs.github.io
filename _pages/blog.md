@@ -2,6 +2,6 @@
 title: "Blog"
 kicker: "Blog"
 permalink: /blog/
-subtitle: "Technical posts from the lab: systems, software, hardware, and whatever is on the bench."
+subtitle: "Restoring and upgrading vintage computers, particularly high-end systems, along with notes on software, hardware, and whatever is on the bench."
 ---
 {% include post-list.html %}

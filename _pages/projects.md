@@ -2,7 +2,7 @@
 title: "Built in the lab"
 permalink: /projects/
 kicker: "Projects"
-subtitle: "Software, patches, and builds from the lab, released openly where licensing allows."
+subtitle: "Open-source software, patches, and builds from the lab, released openly where licensing allows."
 ---
 
 ## Technicomp Benchtop Linux
