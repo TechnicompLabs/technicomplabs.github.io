@@ -1,7 +1,7 @@
 ---
 title: "Systems"
 kicker: "Blog topic"
-subtitle: "How systems are built, virtualized, measured, and tuned."
+subtitle: "How systems are built, virtualized, measured, and tuned, and applied research on them."
 permalink: /blog/topic/systems/
 topic: systems
 ---
