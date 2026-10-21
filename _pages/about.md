@@ -4,7 +4,7 @@ kicker: "About"
 permalink: /about/
 ---
 
-I’m Paul D. Martin, Ph.D. I’m the Chief Scientist at Harbor Experts and a part-time Lecturer in Computer Science at Johns Hopkins University, where I earned my B.S., M.S.E., and Ph.D. in Computer Science. My doctoral research, advised by [Aviel D. Rubin](https://avirubin.com), focused on securing medical devices and protecting patient privacy. I’m a named inventor on five U.S. patents, Secretary of the [IEEE 7024 Working Group](https://development.standards.ieee.org/myproject-web/public/view.html#pardetail/13860), and a former member of the program committee for the IEEE Symposium on Security and Privacy. My professional work is described at [pauldmartin.phd](https://pauldmartin.phd).
+I’m Paul D. Martin, Ph.D. I’m the Chief Scientist at Harbor Experts and a Lecturer in Computer Science at Johns Hopkins University, where I earned my B.S., M.S.E., and Ph.D. in Computer Science. My doctoral research, advised by [Aviel D. Rubin](https://avirubin.com), focused on securing medical devices and protecting patient privacy. I’m a named inventor on five U.S. patents, Secretary of the [IEEE 7024 Working Group](https://development.standards.ieee.org/myproject-web/public/view.html#pardetail/13860), and a former member of the program committee for the IEEE Symposium on Security and Privacy. My professional work is described at [pauldmartin.phd](https://pauldmartin.phd).
 
 Technicomp Labs is separate from that work. It is my independent computing laboratory, a personal and noncommercial project that follows my own interests.
 
