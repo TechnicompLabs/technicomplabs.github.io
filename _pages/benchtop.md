@@ -88,6 +88,8 @@ The supported baseline for x86 workstations is:
 
 This is the hardware Benchtop is designed and tested for, not a promise that every workload fits within it. Large builds, several virtual machines at once, large datasets, and local models may need substantially more memory, storage, or GPU capacity. The storage figure refers to the capacity of the drive, not the size of the installation. The image itself follows Tumbleweed's x86-64 baseline and will boot on older processors, so less capable systems may work, but they are outside the design and test target. The x86-64-v3 level applies only to x86; ARM systems are supported against their own baseline.
 
+Follow my development work in the [Benchtop Linux notebook](https://github.com/pauldmartinphd/benchtop-linux-notebook).
+
 {% include benchtop-handoff.html %}
 
 </div>

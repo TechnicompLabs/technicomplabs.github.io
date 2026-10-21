@@ -9,7 +9,7 @@ subtitle: "Open-source software, patches, and builds from the lab, released open
 
 I’m building Technicomp Benchtop Linux as a stabilized workstation rolling release derived from openSUSE Aeon and built on Tumbleweed. Its kernel and desktop move more cautiously because regressions there can interrupt work, while the Tumbleweed userspace keeps development tools current. The immutable system image includes the Blueprint Environment and workstation tuning that prioritizes low interactive latency. Benchtop is currently in alpha.
 
-[About Benchtop Linux &rarr;](/benchtop/)
+[About Benchtop Linux &rarr;](/benchtop/) · [Development notebook](https://github.com/pauldmartinphd/benchtop-linux-notebook)
 
 ## llAMDa.cpp
 
