@@ -11,6 +11,12 @@ I’m building Technicomp Benchtop Linux as a stabilized workstation rolling rel
 
 [About Benchtop Linux &rarr;](/benchtop/)
 
+## llAMDa.cpp
+
+llAMDa.cpp is an AMD-focused fork of llama.cpp for RDNA, Strix Halo, and Vega. It brings AMD-specific patches from several other forks into one repository, with their authorship preserved, and adds DeepSeek-V4.1 and DSpark support from Unsloth along with the multi-GPU MoE prefill patch from the notebook below. The common changes sit on a default branch, with separate branches for RDNA, Strix Halo, and Vega. I have built and tested it on CPU, and I have not yet benchmarked this revision on Galactus.
+
+[Read the write-up &rarr;](/projects/llamda-cpp/) · [Repository](https://github.com/pauldmartinphd/llAMDa.cpp)
+
 ## LLM Performance Engineering Notebook
 
 The notebook records my applied research on local inference, beginning with large Mixture-of-Experts models on Galactus. The investigation starts with measured hardware limits and a model of time per token, then tests changes to the configuration and code. Per-model results, raw logs, and the hypotheses that testing did not support make the reasoning behind each conclusion available alongside the measurements.
