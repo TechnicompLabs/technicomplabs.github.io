@@ -24,6 +24,17 @@ permalink: /
     <div class="section-head">
       <span class="num">02</span><h2>Applied research</h2>
     </div>
+    <article aria-labelledby="maya-update-title">
+      <p class="kicker">Lab update · October 24, 2026</p>
+      <h3 id="maya-update-title">Large local models at around 30 tokens per second.</h3>
+      <p>I’m now running GLM-5.3-Flash Q4_K_XL and DeepSeek-V4.1-Flash Q8_K_XL at around 30 tokens per second with Project Maya on Galactus: four AMD Radeon Pro V620 GPUs, an EPYC 7713, and 2 TiB of RAM. The October 23 tests measured 31.6 tokens/s for GLM with default speculation and 29.3 tokens/s for DeepSeek with DSpark drafting enabled.</p>
+      <p>The following morning’s DeepSeek dashboard adds a view of ongoing use: 90 requests and 86,075 output tokens at a reported aggregate 28.0 tokens/s. The last request generated 422 tokens at 31.6 tokens/s. These mixed requests provide a useful follow-up to the controlled measurements, with the configurations and measurement limits recorded in the notebook.</p>
+      <figure>
+        <a href="/assets/images/2026-10-24-maya-deepseek-dashboard.png"><img src="/assets/images/2026-10-24-maya-deepseek-dashboard.png" alt="Project Maya v1.1.24 serving DeepSeek-V4.1-Flash on four Radeon Pro V620 GPUs, with 31.6 tokens per second for the last request" width="1599" height="1185" style="height: auto;" loading="lazy"></a>
+        <figcaption>DeepSeek on Galactus, October 24. The large number is the last request’s generation rate; the session aggregate is shown at the bottom. The dashboard is idle at capture time. Select the image to see it full size.</figcaption>
+      </figure>
+      <p><a class="more" href="https://github.com/pauldmartinphd/llm-performance-engineering-notebook#october-23-two-large-moe-models-at-roughly-30-tokenss">Read the measurements and source logs &rarr;</a></p>
+    </article>
     <div class="split">
       <div>
         <p class="kicker">LLM Performance Engineering Notebook</p>
