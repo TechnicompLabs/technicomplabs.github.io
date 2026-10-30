@@ -40,8 +40,7 @@ permalink: /
         <p class="kicker">LLM Performance Engineering Notebook</p>
         <h3>Finding the real speed limit of local inference.</h3>
         <p>The notebook records my experiments on local inference, beginning with large Mixture-of-Experts models. I use hardware measurements and performance estimates to identify limits, then test configuration and code changes to understand where time goes. It includes a llama.cpp scheduler patch that raised prefill throughput 13.7% in the July comparison, per-model results, raw logs, and the hypotheses that testing did not support.</p>
-        <p>The scheduler work now also lives in <a href="/projects/llamda-cpp/">llAMDa.cpp</a>, an AMD-focused llama.cpp fork for RDNA, Strix Halo, and Vega.</p>
-        <p><a class="more" href="https://github.com/pauldmartinphd/llm-performance-engineering-notebook">Read the notebook &rarr;</a> <a class="more" href="/projects/llamda-cpp/">llAMDa.cpp &rarr;</a></p>
+        <p><a class="more" href="https://github.com/pauldmartinphd/llm-performance-engineering-notebook">Read the notebook &rarr;</a></p>
       </div>
       <img src="/assets/images/galactus-build.jpg" alt="Galactus, the lab's inference server: four GPUs and an EPYC processor in a compact chassis">
     </div>
